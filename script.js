@@ -26,15 +26,47 @@ function initDetailLinks(){
   });
 }
 
+const CHAPTERS=[
+  {label:'Ventures',page:'ventures.html',modules:[['storage-platform','Storage Platform &amp; Secondhand Trading'],['healthy-bowl','Healthy Bowl'],['kettle-recipe','Kettle Recipe'],['bpa','BPA'],['china-camping-club','China Camping Club'],['marketing-intern','Marketing Intern']]},
+  {label:'Leadership',page:'leadership.html',modules:[['head-prefect','Head Prefect'],['head-ambassador','Head Ambassador'],['writing-center-tutor','Writing Center Tutor'],['calligraphy-club','Calligraphy Club'],['assistance-coach','Assistance Coach'],['volunteer-teaching','Volunteer Teaching'],['cooking-club','Cooking Club']]},
+  {label:'Visual',page:'visual.html',modules:[['photography','Photography'],['documentary','Documentary']]},
+  {label:'Sports',page:'sports.html',modules:[['figure-skating','Figure Skating'],['dancing','Dancing'],['soccer','Soccer']]}
+];
+
 function initDetailNavigation(){
   if(!document.body.classList.contains('detail-page'))return;
   const nav=document.getElementById('primary-nav');if(!nav)return;
   nav.setAttribute('aria-label','Primary navigation');
-  nav.innerHTML=`<a class="nav-link" href="./index.html#home" data-section="home">Home</a>
-    <div class="nav-group"><button class="nav-trigger" type="button" aria-expanded="false">Ventures</button><div class="dropdown"><a href="./index.html#storage-platform">Storage Platform &amp; Secondhand Trading</a><a href="./index.html#healthy-bowl">Healthy Bowl</a><a href="./index.html#kettle-recipe">Kettle Recipe</a><a href="./index.html#bpa">BPA</a><a href="./index.html#china-camping-club">China Camping Club</a><a href="./index.html#marketing-intern">Marketing Intern</a></div></div>
-    <div class="nav-group"><button class="nav-trigger" type="button" aria-expanded="false">Leadership</button><div class="dropdown"><a href="./index.html#head-prefect">Head Prefect</a><a href="./index.html#head-ambassador">Head Ambassador</a><a href="./index.html#writing-center-tutor">Writing Center Tutor</a><a href="./index.html#calligraphy-club">Calligraphy Club</a><a href="./index.html#assistance-coach">Assistance Coach</a><a href="./index.html#volunteer-teaching">Volunteer Teaching</a><a href="./index.html#cooking-club">Cooking Club</a></div></div>
-    <div class="nav-group"><button class="nav-trigger" type="button" aria-expanded="false">Visual</button><div class="dropdown"><a href="./index.html#photography">Photography</a><a href="./index.html#documentary">Documentary</a></div></div>
-    <div class="nav-group"><button class="nav-trigger" type="button" aria-expanded="false">Sports</button><div class="dropdown"><a href="./index.html#figure-skating">Figure Skating</a><a href="./index.html#dancing">Dancing</a><a href="./index.html#soccer">Soccer</a></div></div>`;
+  const file=(location.pathname.split('/').pop()||'').toLowerCase();
+  const preview=`<div class="dropdown-jump">`+CHAPTERS.map(ch=>`<a href="./index.html#${ch.page.replace('.html','')}">${ch.label} <span>Preview</span></a>`).join('')+`</div>`;
+  nav.innerHTML=`<div class="nav-group"><a class="nav-link" href="./index.html#home" data-section="home">Home</a><div class="dropdown">${preview}</div></div>`+CHAPTERS.map(ch=>{
+    const active=file===ch.page;
+    const links=ch.modules.map(([id,label])=>`<a href="./${ch.page}#${id}">${label}</a>`).join('');
+    return `<div class="nav-group"><a class="nav-link${active?' active':''}" href="./${ch.page}"${active?' aria-current="page"':''}>${ch.label}</a><div class="dropdown">${links}</div></div>`;
+  }).join('');
+}
+
+function initModuleFocus(){
+  if(!document.body.classList.contains('detail-page'))return;
+  const modules=[...document.querySelectorAll('.detail-module')];
+  const file=(location.pathname.split('/').pop()||'').toLowerCase();
+  const chapter=CHAPTERS.find(item=>item.page===file);
+  const smooth=()=>matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+  const render=()=>{
+    const id=decodeURIComponent(location.hash.replace('#',''));
+    const next=id?modules.find(module=>module.id===id):null;
+    modules.forEach(module=>{module.classList.remove('is-focused');module.querySelector('.module-focus-bar')?.remove()});
+    document.body.classList.toggle('module-focus',Boolean(next));
+    if(!next)return;
+    next.classList.add('is-focused');
+    const bar=document.createElement('p');
+    bar.className='module-focus-bar';
+    bar.innerHTML=`<a class="module-back" href="./${file}"><span aria-hidden="true">←</span> Back to all ${chapter?chapter.label:'stories'}</a>`;
+    next.prepend(bar);
+    next.scrollIntoView({block:'start',behavior:smooth()});
+  };
+  render();
+  window.addEventListener('hashchange',render);
 }
 
 function initDropdowns(){
@@ -58,7 +90,8 @@ function initSmoothScroll(){
 }
 
 function initScrollSpy(){
-  const map={home:document.querySelector('[data-section="home"]'),ventures:[...document.querySelectorAll('.nav-trigger')][0],leadership:[...document.querySelectorAll('.nav-trigger')][1],visual:[...document.querySelectorAll('.nav-trigger')][2],sports:[...document.querySelectorAll('.nav-trigger')][3]};
+  const byPage=name=>document.querySelector('a.nav-link[href$="'+name+'.html"]');
+  const map={home:document.querySelector('[data-section="home"]'),ventures:byPage('ventures'),leadership:byPage('leadership'),visual:byPage('visual'),sports:byPage('sports')};
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){Object.values(map).forEach(item=>item?.classList.remove('active'));map[entry.target.dataset.spy]?.classList.add('active')}}),{rootMargin:'-30% 0px -60% 0px'});
   document.querySelectorAll('[data-spy]').forEach(section=>observer.observe(section));
 }
@@ -82,7 +115,7 @@ function showSlide(carousel,index){
 function initCarousels(){
   document.querySelectorAll('[data-carousel]').forEach(carousel=>{
     carousel.dataset.index='0';
-    let timer;const interval=Number(carousel.dataset.autoplay||0);
+    let timer;const interval=Number(carousel.dataset.autoplay||3000);
     const restart=()=>{clearInterval(timer);if(interval>0&&!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>showSlide(carousel,Number(carousel.dataset.index)+1),interval)};
     carousel.querySelector('.carousel-prev')?.addEventListener('click',()=>{showSlide(carousel,Number(carousel.dataset.index)-1);restart()});
     carousel.querySelector('.carousel-next')?.addEventListener('click',()=>{showSlide(carousel,Number(carousel.dataset.index)+1);restart()});
@@ -126,4 +159,4 @@ function initFeatureVideos(){
   });
 }
 
-document.addEventListener('DOMContentLoaded',()=>{initContentOrder();initDetailLinks();initDetailNavigation();initNavigation();initDropdowns();initSmoothScroll();initScrollSpy();initRevealAnimations();initCarousels();initLightbox();initMobileMenu();initLazyVideos();initFeatureVideos()});
+document.addEventListener('DOMContentLoaded',()=>{initContentOrder();initDetailLinks();initDetailNavigation();initModuleFocus();initNavigation();initDropdowns();initSmoothScroll();initScrollSpy();initRevealAnimations();initCarousels();initLightbox();initMobileMenu();initLazyVideos();initFeatureVideos()});
