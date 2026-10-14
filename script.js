@@ -148,15 +148,27 @@ function initLazyVideos(){
 }
 
 function initFeatureVideos(){
-  document.querySelectorAll('[data-feature-video]').forEach(wrapper=>{
+  const wrappers=[...document.querySelectorAll('[data-feature-video]')];
+  const videos=wrappers.map(wrapper=>wrapper.querySelector('video')).filter(Boolean);
+  wrappers.forEach(wrapper=>{
     const video=wrapper.querySelector('video');const button=wrapper.querySelector('.feature-video-toggle');if(!video||!button)return;
     let hideTimer;
     const showTemporarily=()=>{clearTimeout(hideTimer);wrapper.classList.remove('controls-hidden');if(!video.paused&&!video.ended)hideTimer=setTimeout(()=>wrapper.classList.add('controls-hidden'),2000)};
     const sync=()=>{const playing=!video.paused&&!video.ended;wrapper.classList.toggle('is-playing',playing);button.setAttribute('aria-label',playing?'Pause video':'Play video');button.querySelector('span').textContent=playing?'❚❚':'▶';if(playing)showTemporarily();else{clearTimeout(hideTimer);wrapper.classList.remove('controls-hidden')}};
     button.addEventListener('click',()=>video.paused?video.play():video.pause());
     wrapper.addEventListener('pointermove',()=>{if(!video.paused)showTemporarily()});
-    video.addEventListener('play',sync);video.addEventListener('pause',sync);video.addEventListener('ended',sync);sync();
+    video.addEventListener('play',()=>{videos.forEach(other=>{if(other!==video&&!other.paused)other.pause()});sync()});video.addEventListener('pause',sync);video.addEventListener('ended',sync);sync();
   });
+  const firstVideo=videos[0];if(!firstVideo)return;
+  firstVideo.muted=true;firstVideo.setAttribute('muted','');firstVideo.playsInline=true;
+  let autoplayVisible=false;
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    autoplayVisible=entry.isIntersecting;
+    if(autoplayVisible){const attempt=firstVideo.play();if(attempt)attempt.catch(()=>{})}
+    else firstVideo.pause();
+  }),{threshold:.35});
+  observer.observe(firstVideo.closest('[data-feature-video]')||firstVideo);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)firstVideo.pause();else if(autoplayVisible){const attempt=firstVideo.play();if(attempt)attempt.catch(()=>{})}});
 }
 
 document.addEventListener('DOMContentLoaded',()=>{initContentOrder();initDetailLinks();initDetailNavigation();initModuleFocus();initNavigation();initDropdowns();initSmoothScroll();initScrollSpy();initRevealAnimations();initCarousels();initLightbox();initMobileMenu();initLazyVideos();initFeatureVideos()});
