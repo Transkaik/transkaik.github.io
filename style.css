@@ -301,11 +301,11 @@ footer span {
 @media(max-width:900px){.photography-more-grid{grid-template-columns:1fr 1fr}.photography-more-grid figure:first-child{grid-column:1/-1}}
 @media(max-width:767px){.photography-collection+.photography-collection{margin-top:54px;padding-top:42px}.photography-collection-header{align-items:start;flex-direction:column;gap:8px}.photography-collection-header>p:last-child{text-align:left}.award-photo-grid,.photography-more-grid{grid-template-columns:1fr}.photography-more-grid figure:first-child{grid-column:auto}.award-photo-card span,.award-photo-card:after{opacity:1;transform:none}}
 .camping-gallery{width:100%;max-width:960px;margin:0 auto}.sports-carousel.camping-gallery .slides{aspect-ratio:16/9;background:#17151b}.camping-gallery .slide img{object-fit:cover;object-position:center 32%}
-.module-press{margin-top:64px}
 .photography-more-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr) minmax(0,.85fr)}.photography-more-grid figure{min-width:0}.photography-more-grid .zoom{width:100%;max-width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden}.photography-more-grid .zoom img{width:100%;height:100%;object-fit:cover}
 @media(max-width:900px){.photography-more-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 @media(max-width:767px){.photography-more-grid{grid-template-columns:minmax(0,1fr)}}
 .pdf-embed{margin:0 0 clamp(48px,6vw,72px)}
+.pdf-embed-below-media{max-width:960px;margin:clamp(44px,5vw,68px) auto clamp(48px,6vw,72px)}
 .pdf-embed-bar{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:18px}
 .pdf-embed-bar .sub-label{margin:0}
 .pdf-embed-title{margin:6px 0 0;font:400 clamp(1.25rem,2vw,1.6rem)/1.2 var(--serif);letter-spacing:-.02em}
@@ -315,8 +315,7 @@ footer span {
 .pdf-frame{display:block;width:100%;height:clamp(560px,82vh,960px);border:1px solid var(--line);border-radius:12px;background:var(--paper)}
 .pdf-embed-note{margin:12px 0 0;color:var(--muted);font-size:13px}
 .pdf-embed-note a{color:var(--pink);text-decoration:none}
-.article-card-grid.is-single{grid-template-columns:minmax(0,460px)}
-@media(max-width:767px){.module-press{margin-top:48px}}
+
 .detail-page.module-focus .detail-toc{display:none}.detail-page.module-focus .detail-module{display:none}.detail-page.module-focus .detail-module.is-focused{display:block}
 .module-focus-bar{margin:0 0 34px}
 .module-back{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);text-decoration:none;font-size:12px}
@@ -326,3 +325,35 @@ footer span {
 .dropdown-jump a span{color:var(--pink);font:700 9px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
 .dropdown-jump a:hover,.dropdown-jump a:focus-visible{background:var(--bg);color:var(--ink)}
 @media(max-width:767px){.nav-group .dropdown{max-height:none;padding:0 0 0 14px;overflow:visible}.pdf-embed-bar{align-items:flex-start}.pdf-frame{height:clamp(420px,70vh,620px)}}
+/* ===== Figure Skating — layout tuned to the real size & theme of each medium ===== */
+
+/* 1. Competition gallery "On the ice": left on its original full-width 16/9
+      stage (only the media below was re-laid out). */
+
+/* 2. Teaching: gallery + coaching clip are one idea — "still on the ice, now
+      teaching" — so they share a panel and an equal 16/9 frame. */
+@media(min-width:901px){
+  .skating-support-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;align-items:center;padding:clamp(20px,2.6vw,32px)}
+}
+.skating-support-grid .slides{aspect-ratio:16/9}
+.skating-support-grid .sports-video-frame.landscape{aspect-ratio:16/9}
+.skating-support-grid .feature-video{object-fit:cover}
+.skating-support-grid .assistant-video-card{align-self:center;margin:0}
+
+/* 3. Event footage: both clips are shot ultra-wide (≈2.14:1). Match the frame to
+      the file so there are no letterbox bars, and pair the vertical interview
+      beside the wide competition shot. */
+.skating-event-section{margin-top:clamp(58px,6vw,88px);padding-top:clamp(44px,4.6vw,62px);border-top:1px solid var(--line)}
+.skating-event-videos{margin-top:0;padding-top:0;border-top:0}
+@media(min-width:901px){
+  .skating-event-videos{grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:36px;align-items:center}
+}
+.skating-event-videos .sports-video-frame.landscape{aspect-ratio:2.14;max-width:none}
+.skating-event-videos .sports-video-frame.portrait{width:min(100%,300px);aspect-ratio:2160/3812}
+.skating-event-videos .sports-video-frame.portrait .feature-video{object-fit:cover}
+
+/* 4. One rhythm for every act in the module. */
+.skating-press{margin-top:clamp(58px,6vw,88px);padding-top:clamp(44px,4.6vw,62px)}
+@media(max-width:767px){
+  .skating-event-videos .sports-video-frame.landscape{aspect-ratio:16/9}
+}

@@ -1,0 +1,26 @@
+assets\sports\dancing\dancing1.png | 1920x1280 (1.50) | 1.0MB
+assets\sports\dancing\dancing2.png | 1920x1280 (1.50) | 0.9MB
+assets\sports\dancing\dancing3.jpg | 1919x1280 (1.50) | 0.1MB
+assets\sports\fgure skating\Figure skating competition interview.mp4 | video | 66.9MB
+assets\sports\fgure skating\Skating Teaching Assistant.mp4 | video | 61.5MB
+assets\sports\fgure skating\Skating Teaching Assistant1.jpg | 3840x2160 (1.78) | 3.3MB
+assets\sports\fgure skating\Skating Teaching Assistant2.jpg | 4096x3072 (1.33) | 2.0MB
+assets\sports\fgure skating\skating.mp4 | video | 60.5MB
+assets\sports\fgure skating\skating10.jpg | 1620x1080 (1.50) | 0.1MB
+assets\sports\fgure skating\skating3.jpeg | 5220x4396 (1.19) | 3.5MB
+assets\sports\fgure skating\skating4.png | 3462x3811 (0.91) | 2.2MB
+assets\sports\fgure skating\skating5.png | 2463x4201 (0.59) | 1.6MB
+assets\sports\fgure skating\skating6.jpg | 1920x1080 (1.78) | 0.2MB
+assets\sports\fgure skating\skating6.png | 4226x4310 (0.98) | 2.7MB
+assets\sports\fgure skating\skating7.png | 6720x4480 (1.50) | 6.6MB
+assets\sports\fgure skating\skating9.jpg | 2240x2440 (0.92) | 0.1MB
+assets\sports\soccer\soccer1.jpg | 1877x1280 (1.47) | 0.5MB
+assets\sports\soccer\soccer2.jpg | 1702x1276 (1.33) | 0.4MB
+assets\sports\soccer\soccer3.jpg | 1707x1280 (1.33) | 0.5MB
+assets\sports\soccer\soccer4.jpg | 1280x1707 (0.75) | 0.4MB
+assets\sports\surfing\surfing1.jpg | 2048x1638 (1.25) | 1.1MB
+assets\sports\surfing\surfing2.jpg | 2048x1638 (1.25) | 1.0MB
+assets\home\missing.png | 800x400 (2.00) | 0.2MB
+assets\home\student-representative-highlights\Student Representative Speech-cover.jpg | 1920x1080 (1.78) | 0.3MB
+assets\home\student-representative-highlights\student-representative-highlights-cover.jpg | 1920x1080 (1.78) | 0.3MB
+assets\home\student-representative-highlights\student-representative-highlights.mp4 | video | 96.1MB
