@@ -13,6 +13,9 @@
 .feature-video-toggle span{margin-left:4px;font-size:28px;line-height:1}
 .feature-video-wrap.is-playing .feature-video-toggle span{margin-left:0;font-size:22px;letter-spacing:-3px}
 .feature-video-wrap.controls-hidden .feature-video-toggle{opacity:0;pointer-events:none}
+.feature-video-sound{display:none;position:absolute;z-index:3;right:14px;top:14px;padding:7px 13px;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(15,14,18,.66);color:#fff;font:600 10px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.feature-video-wrap.is-muted .feature-video-sound{display:inline-flex;align-items:center;gap:6px}
+.feature-video-sound:hover,.feature-video-sound:focus-visible{background:rgba(232,93,145,.9);border-color:rgba(255,255,255,.8);color:#fff}
 .video-placeholder{min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;background:linear-gradient(160deg,#fbfaf7,#f3f1ec);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
 .video-placeholder span{margin-bottom:auto;align-self:flex-start;color:var(--pink);font-size:11px;font-weight:700;letter-spacing:.13em}
 .video-placeholder strong{font:400 clamp(1.4rem,2.5vw,2.3rem)/1.15 var(--serif)}
@@ -343,8 +346,9 @@ footer span {
 /* 3. Event footage: both clips are shot ultra-wide (≈2.14:1). Match the frame to
       the file so there are no letterbox bars, and pair the vertical interview
       beside the wide competition shot. */
-.skating-event-section{margin-top:clamp(58px,6vw,88px);padding-top:clamp(44px,4.6vw,62px);border-top:1px solid var(--line)}
+.skating-event-section{margin-top:0;padding-top:0;border-top:0}
 .skating-event-videos{margin-top:0;padding-top:0;border-top:0}
+.skating-support-grid{margin-top:clamp(52px,5vw,72px)}
 @media(min-width:901px){
   .skating-event-videos{grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:36px;align-items:center}
 }
