@@ -203,10 +203,10 @@ function initYouTubeVideos(){
     const firstMedia=document.querySelector('[data-feature-video]');
     const pageOrigin=/^https?:$/.test(location.protocol)?location.origin:'https://transkaik.github.io';
     const pageReferrer=/^https?:$/.test(location.protocol)?location.href:pageOrigin;
-    const update=(wrapper,playing)=>{wrapper.classList.toggle('is-playing',playing);const button=wrapper.querySelector('.feature-video-toggle');if(!button)return;button.setAttribute('aria-label',playing?'Pause video':'Play video');button.querySelector('span').textContent=playing?'❚❚':'▶'};
+    const update=(wrapper,playing)=>{wrapper.classList.toggle('is-playing',playing);const button=wrapper.querySelector('.feature-video-toggle');if(!button)return;button.hidden=playing;button.setAttribute('aria-label',playing?'Pause video':'Play video');button.querySelector('span').textContent=playing?'❚❚':'▶'};
     const pauseOthers=current=>{players.forEach(({player})=>{if(player!==current&&player.getPlayerState?.()===YT.PlayerState.PLAYING)player.pauseVideo()});document.querySelectorAll('video').forEach(video=>{if(!video.paused)video.pause()})};
     const playWithSound=(wrapper,player)=>{
-      pauseOthers(player);player.unMute();player.setVolume(100);wrapper.classList.remove('is-muted');player.playVideo();
+      pauseOthers(player);player.unMute();player.setVolume(100);wrapper.classList.remove('is-muted');update(wrapper,true);player.playVideo();
     };
     wrappers.forEach(wrapper=>{
       const mount=wrapper.querySelector('.youtube-player');const button=wrapper.querySelector('.feature-video-toggle');if(!mount||!button)return;
@@ -215,7 +215,8 @@ function initYouTubeVideos(){
         onReady:()=>{
           if(wrapper===firstMedia){autoplayPlayer=player;if(!observerStarted){observerStarted=true;const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{autoplayVisible=entry.isIntersecting;if(autoplayVisible)playWithSound(wrapper,player);else player.pauseVideo()}),{threshold:.35});observer.observe(wrapper)}}
         },
-        onStateChange:event=>{const playing=event.data===YT.PlayerState.PLAYING;update(wrapper,playing);if(playing)pauseOthers(player)}
+        onStateChange:event=>{if(event.data===YT.PlayerState.PLAYING){update(wrapper,true);pauseOthers(player)}else if([YT.PlayerState.UNSTARTED,YT.PlayerState.ENDED,YT.PlayerState.PAUSED,YT.PlayerState.CUED].includes(event.data))update(wrapper,false)},
+        onAutoplayBlocked:()=>update(wrapper,false)
       }});
       players.push({wrapper,player});button.addEventListener('click',()=>player.getPlayerState()===YT.PlayerState.PLAYING?player.pauseVideo():playWithSound(wrapper,player));
     });
