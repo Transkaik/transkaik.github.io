@@ -16,6 +16,11 @@
 .feature-video-sound{display:none;position:absolute;z-index:3;right:14px;top:14px;padding:7px 13px;border:1px solid rgba(255,255,255,.6);border-radius:999px;background:rgba(15,14,18,.66);color:#fff;font:600 10px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 .feature-video-wrap.is-muted .feature-video-sound{display:inline-flex;align-items:center;gap:6px}
 .feature-video-sound:hover,.feature-video-sound:focus-visible{background:rgba(232,93,145,.9);border-color:rgba(255,255,255,.8);color:#fff}
+.youtube-video-wrap iframe{display:block;width:100%;height:100%;border:0;background:#17151b}
+.youtube-video-toggle{width:76px;height:52px;border:0;border-radius:14px;background:#f00;box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.youtube-video-toggle:hover,.youtube-video-toggle:focus-visible{background:#c00;transform:translate(-50%,-50%) scale(1.06)}
+.youtube-video-toggle span{font-family:Arial,Helvetica,sans-serif;font-size:25px;font-weight:700}
+.youtube-video-wrap.is-playing .youtube-video-toggle span{font-size:20px;letter-spacing:-4px}
 .video-placeholder{min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;background:linear-gradient(160deg,#fbfaf7,#f3f1ec);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
 .video-placeholder span{margin-bottom:auto;align-self:flex-start;color:var(--pink);font-size:11px;font-weight:700;letter-spacing:.13em}
 .video-placeholder strong{font:400 clamp(1.4rem,2.5vw,2.3rem)/1.15 var(--serif)}
@@ -272,6 +277,7 @@ footer span {
 .sports-video-frame.portrait{max-width:330px;aspect-ratio:9/16;margin:0 auto}
 .sports-video-frame video{width:100%;height:100%;object-fit:contain;background:#17151b}
 .sports-video-frame .feature-video-toggle{width:68px;height:68px}
+.sports-video-frame .youtube-video-toggle{width:68px;height:48px}
 .sports-video-card figcaption{display:flex;gap:10px;margin-top:12px;color:var(--ink);font:400 1rem/1.35 var(--serif)}
 .sports-video-card figcaption span{color:var(--pink);font:700 10px/1.8 var(--sans);letter-spacing:.12em}
 .media-pending img{opacity:.48;filter:saturate(.7)}
@@ -355,6 +361,8 @@ footer span {
 .skating-event-videos .sports-video-frame.landscape{aspect-ratio:2.14;max-width:none}
 .skating-event-videos .sports-video-frame.portrait{width:min(100%,300px);aspect-ratio:2160/3812}
 .skating-event-videos .sports-video-frame.portrait .feature-video{object-fit:cover}
+.documentary-video-card{width:100%;max-width:980px;margin:0 auto}
+.documentary-home-video{width:100%;max-width:var(--max);margin:0 auto}
 
 /* 4. One rhythm for every act in the module. */
 .skating-press{margin-top:clamp(58px,6vw,88px);padding-top:clamp(44px,4.6vw,62px)}
