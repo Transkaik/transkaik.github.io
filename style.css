@@ -372,3 +372,18 @@ footer span {
 @media(max-width:767px){
   .skating-event-videos .sports-video-frame.landscape{aspect-ratio:16/9}
 }
+
+/* HOME — clearer transitions between portfolio chapters */
+.home-page .chapter{--chapter-accent:#e85d91;--chapter-tint:#fbe8ef;position:relative;border-top:1px solid rgba(39,36,43,.1);background:linear-gradient(180deg,var(--chapter-tint) 0,rgba(255,255,255,0) 240px),var(--bg)}
+.home-page .chapter::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--chapter-accent),rgba(255,255,255,0) 72%)}
+.home-page .chapter-home{--chapter-accent:#d95084;--chapter-tint:#fbe8ef;--chapter-number:"01"}
+.home-page .chapter-ventures{--chapter-accent:#b8792f;--chapter-tint:#fbf0df;--chapter-number:"02"}
+.home-page .chapter-leadership{--chapter-accent:#657d69;--chapter-tint:#eaf1e9;--chapter-number:"03"}
+.home-page .chapter-visual{--chapter-accent:#5f78a3;--chapter-tint:#e9eef8;--chapter-number:"04"}
+.home-page .chapter-sports{--chapter-accent:#9a5f82;--chapter-tint:#f3e8f0;--chapter-number:"05"}
+.home-page .chapter-header{position:relative;max-width:var(--max);padding:clamp(25px,3.6vw,42px) clamp(24px,4.5vw,54px);border:1px solid rgba(39,36,43,.1);border-left:6px solid var(--chapter-accent);border-radius:18px;background:linear-gradient(120deg,rgba(255,255,255,.84),rgba(255,255,255,.48));box-shadow:0 18px 50px rgba(39,36,43,.055);overflow:hidden}
+.home-page .chapter-header::after{content:var(--chapter-number);position:absolute;right:clamp(18px,4vw,48px);top:50%;color:var(--chapter-accent);font:700 clamp(5rem,10vw,8.5rem)/1 var(--serif);letter-spacing:-.08em;opacity:.09;transform:translateY(-50%);pointer-events:none}
+.home-page .chapter-header>*{position:relative;z-index:1}
+.home-page .chapter-header .chapter-no{color:var(--chapter-accent)}
+.home-page .chapter-header h2::after{background:linear-gradient(90deg,var(--chapter-accent),rgba(255,255,255,0))}
+@media(max-width:767px){.home-page .chapter::before{height:4px}.home-page .chapter-header{padding:24px 22px;border-left-width:4px;border-radius:14px}.home-page .chapter-header::after{right:18px;font-size:5.2rem;opacity:.07}}
