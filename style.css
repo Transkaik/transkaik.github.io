@@ -383,3 +383,8 @@ footer span {
 .home-page .chapter-header .chapter-no{color:var(--chapter-accent)}
 .home-page .chapter-header h2::after{background:linear-gradient(90deg,var(--chapter-accent),rgba(255,255,255,0))}
 @media(max-width:767px){.home-page .chapter::before{height:4px}.home-page .chapter-header{padding:18px 18px;border-radius:10px}.home-page .chapter-header::after{right:14px;font-size:4.2rem;opacity:.065}}
+
+/* DETAIL — compact top hero */
+.detail-page .detail-hero{padding-top:calc(var(--header) + 48px);padding-bottom:58px}
+.detail-page .detail-toc{margin-top:24px}
+@media(max-width:767px){.detail-page .detail-hero{padding-top:calc(var(--header) + 34px);padding-bottom:44px}.detail-page .detail-toc{margin-top:20px}}
