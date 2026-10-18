@@ -197,9 +197,12 @@ function loadYouTubeAPI(){
 
 function initYouTubeVideos(){
   const wrappers=[...document.querySelectorAll('[data-youtube-video]')];if(!wrappers.length)return;
+  if(!document.querySelector('meta[name="referrer"]')){const meta=document.createElement('meta');meta.name='referrer';meta.content='strict-origin-when-cross-origin';document.head.appendChild(meta)}
   loadYouTubeAPI().then(YT=>{
     const players=[];let autoplayPlayer=null;let autoplayVisible=false;let observerStarted=false;
     const firstMedia=document.querySelector('[data-feature-video]');
+    const pageOrigin=/^https?:$/.test(location.protocol)?location.origin:'https://transkaik.github.io';
+    const pageReferrer=/^https?:$/.test(location.protocol)?location.href:pageOrigin;
     const update=(wrapper,playing)=>{wrapper.classList.toggle('is-playing',playing);const button=wrapper.querySelector('.feature-video-toggle');if(!button)return;button.setAttribute('aria-label',playing?'Pause video':'Play video');button.querySelector('span').textContent=playing?'❚❚':'▶'};
     const pauseOthers=current=>{players.forEach(({player})=>{if(player!==current&&player.getPlayerState?.()===YT.PlayerState.PLAYING)player.pauseVideo()});document.querySelectorAll('video').forEach(video=>{if(!video.paused)video.pause()})};
     const addSoundPrompt=(wrapper,player)=>{
@@ -214,7 +217,7 @@ function initYouTubeVideos(){
     wrappers.forEach(wrapper=>{
       const mount=wrapper.querySelector('.youtube-player');const button=wrapper.querySelector('.feature-video-toggle');if(!mount||!button)return;
       const videoId=mount.dataset.youtubeId;
-      const player=new YT.Player(mount,{videoId,playerVars:{autoplay:0,controls:1,playsinline:1,rel:0,modestbranding:1},events:{
+      const player=new YT.Player(mount,{videoId,host:'https://www.youtube.com',playerVars:{autoplay:0,controls:1,playsinline:1,rel:0,modestbranding:1,origin:pageOrigin,widget_referrer:pageReferrer},events:{
         onReady:()=>{
           if(wrapper===firstMedia){autoplayPlayer=player;if(!observerStarted){observerStarted=true;const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{autoplayVisible=entry.isIntersecting;if(autoplayVisible)playWithSound(wrapper,player,true);else player.pauseVideo()}),{threshold:.35});observer.observe(wrapper)}}
         },
