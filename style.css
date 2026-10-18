@@ -388,3 +388,6 @@ footer span {
 .detail-page .detail-hero{padding-top:calc(var(--header) + 48px);padding-bottom:58px}
 .detail-page .detail-toc{margin-top:24px}
 @media(max-width:767px){.detail-page .detail-hero{padding-top:calc(var(--header) + 34px);padding-bottom:44px}.detail-page .detail-toc{margin-top:20px}}
+
+/* Temporarily hide unfinished resource buttons in selected detail modules. */
+.detail-page #head-prefect .resource-links,.detail-page #head-ambassador .resource-links,.detail-page #writing-center-tutor .resource-links,.detail-page #calligraphy-club .resource-links,.detail-page #assistance-coach .resource-links,.detail-page #volunteer-teaching .resource-links,.detail-page #cooking-club .resource-links,.detail-page #storage-platform .resource-links,.detail-page #kettle-recipe .resource-links,.detail-page #marketing-intern .resource-links,.detail-page #documentary .resource-links{display:none}
