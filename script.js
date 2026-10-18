@@ -115,7 +115,7 @@ function showSlide(carousel,index){
 function initCarousels(){
   document.querySelectorAll('[data-carousel]').forEach(carousel=>{
     carousel.dataset.index='0';
-    let timer;const interval=Number(carousel.dataset.autoplay||3000);
+    let timer;const interval=2400;
     const restart=()=>{clearInterval(timer);if(interval>0&&!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>showSlide(carousel,Number(carousel.dataset.index)+1),interval)};
     carousel.querySelector('.carousel-prev')?.addEventListener('click',()=>{showSlide(carousel,Number(carousel.dataset.index)-1);restart()});
     carousel.querySelector('.carousel-next')?.addEventListener('click',()=>{showSlide(carousel,Number(carousel.dataset.index)+1);restart()});

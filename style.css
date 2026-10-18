@@ -391,3 +391,9 @@ footer span {
 
 /* Temporarily hide unfinished resource buttons in selected detail modules. */
 .detail-page #head-prefect .resource-links,.detail-page #head-ambassador .resource-links,.detail-page #writing-center-tutor .resource-links,.detail-page #calligraphy-club .resource-links,.detail-page #assistance-coach .resource-links,.detail-page #volunteer-teaching .resource-links,.detail-page #cooking-club .resource-links,.detail-page #storage-platform .resource-links,.detail-page #kettle-recipe .resource-links,.detail-page #marketing-intern .resource-links,.detail-page #documentary .resource-links{display:none}
+
+/* Larger Calligraphy gallery and smoother 2.4s carousel transitions. */
+#calligraphy-club .leadership-gallery{max-width:none}
+.slide{z-index:0;pointer-events:none;transition:opacity .7s ease,visibility 0s linear .7s}
+.slide.is-active{z-index:1;pointer-events:auto;transition:opacity .7s ease,visibility 0s}
+@media(prefers-reduced-motion:reduce){.slide,.slide.is-active{transition:none}}
