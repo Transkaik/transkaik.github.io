@@ -364,7 +364,7 @@ footer span {
 .skating-event-videos .sports-video-frame.portrait{width:min(100%,300px);aspect-ratio:2160/3812}
 .skating-event-videos .sports-video-frame.portrait .feature-video{object-fit:cover}
 .documentary-video-card{width:100%;max-width:var(--max);margin:0 auto}
-.documentary-home-video{width:100%;max-width:var(--max);margin:0 auto}
+.documentary-home-video{width:100%;max-width:960px;margin:0 auto}
 @media(min-width:1228px){.documentary-video-card{width:calc(100% + 48px);margin-left:-24px;margin-right:-24px}}
 
 /* 4. One rhythm for every act in the module. */
