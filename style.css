@@ -377,7 +377,7 @@ footer span {
 .home-page .chapter{--chapter-accent:#e85d91;position:relative;border-top:1px solid rgba(39,36,43,.1);background:var(--bg)}
 .home-page .chapter::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--chapter-accent),rgba(255,255,255,0) 72%)}
 .home-page .chapter-home{--chapter-number:"01"}.home-page .chapter-ventures{--chapter-number:"02"}.home-page .chapter-leadership{--chapter-number:"03"}.home-page .chapter-visual{--chapter-number:"04"}.home-page .chapter-sports{--chapter-number:"05"}
-.home-page .chapter-header{position:relative;max-width:920px;padding:clamp(19px,2.4vw,28px) clamp(22px,3vw,36px);border:1px solid rgba(39,36,43,.09);border-left:4px solid var(--chapter-accent);border-radius:12px;background:linear-gradient(120deg,#fbe9ee,#eef1fa 48%,#e2f7f7);box-shadow:0 12px 32px rgba(39,36,43,.045);overflow:hidden}
+.home-page .chapter-header{position:relative;width:100%;max-width:var(--max);padding:clamp(19px,2.4vw,28px) clamp(22px,3vw,36px);border:1px solid rgba(39,36,43,.09);border-left:4px solid var(--chapter-accent);border-radius:12px;background:linear-gradient(120deg,#fbe9ee,#eef1fa 48%,#e2f7f7);box-shadow:0 12px 32px rgba(39,36,43,.045);overflow:hidden}
 .home-page .chapter-header::after{content:var(--chapter-number);position:absolute;right:clamp(16px,3vw,30px);top:50%;color:var(--chapter-accent);font:700 clamp(4rem,7vw,6.2rem)/1 var(--serif);letter-spacing:-.08em;opacity:.08;transform:translateY(-50%);pointer-events:none}
 .home-page .chapter-header>*{position:relative;z-index:1}
 .home-page .chapter-header .chapter-no{color:var(--chapter-accent)}
