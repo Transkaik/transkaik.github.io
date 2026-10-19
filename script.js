@@ -189,13 +189,21 @@ function initFeatureVideos(){
 
 function loadYouTubeAPI(){
   if(window.YT?.Player)return Promise.resolve(window.YT);
-  return new Promise(resolve=>{
+  return new Promise((resolve,reject)=>{
     const previous=window.onYouTubeIframeAPIReady;
     window.onYouTubeIframeAPIReady=()=>{if(typeof previous==='function')previous();resolve(window.YT)};
     if(!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')){
-      const script=document.createElement('script');script.src='https://www.youtube.com/iframe_api';document.head.appendChild(script);
+      const script=document.createElement('script');script.src='https://www.youtube.com/iframe_api';script.referrerPolicy='strict-origin-when-cross-origin';script.addEventListener('error',reject,{once:true});document.head.appendChild(script);
     }
   });
+}
+
+function showYouTubeFallback(wrapper,videoId){
+  if(wrapper.querySelector('.youtube-fallback'))return;
+  wrapper.querySelector('.feature-video-toggle')?.setAttribute('hidden','');
+  const fallback=document.createElement('div');fallback.className='youtube-fallback';
+  const link=document.createElement('a');link.href=`https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Open this video on YouTube ↗';
+  fallback.append('The embedded player could not load. ',link);wrapper.appendChild(fallback);
 }
 
 function initYouTubeVideos(){
@@ -214,17 +222,20 @@ function initYouTubeVideos(){
     wrappers.forEach(wrapper=>{
       const mount=wrapper.querySelector('.youtube-player');const button=wrapper.querySelector('.feature-video-toggle');if(!mount||!button)return;
       const videoId=mount.dataset.youtubeId;
-      const player=new YT.Player(mount,{videoId,host:'https://www.youtube.com',playerVars:{autoplay:0,controls:1,playsinline:1,rel:0,modestbranding:1,origin:pageOrigin,widget_referrer:pageReferrer},events:{
+      const params=new URLSearchParams({enablejsapi:'1',autoplay:'0',controls:'1',playsinline:'1',rel:'0',modestbranding:'1',origin:pageOrigin,widget_referrer:pageReferrer});
+      const iframe=document.createElement('iframe');iframe.src=`https://www.youtube.com/embed/${encodeURIComponent(videoId)}?${params}`;iframe.title=mount.getAttribute('aria-label')||'YouTube video';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';mount.replaceWith(iframe);
+      const player=new YT.Player(iframe,{events:{
         onReady:()=>{
           if(wrapper===firstMedia){autoplayPlayer=player;if(!observerStarted){observerStarted=true;const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{autoplayVisible=entry.isIntersecting;if(autoplayVisible)playWithSound(wrapper,player);else player.pauseVideo()}),{threshold:.35});observer.observe(wrapper)}}
         },
         onStateChange:event=>{if(event.data===YT.PlayerState.PLAYING){update(wrapper,true);pauseOthers(player)}else if([YT.PlayerState.UNSTARTED,YT.PlayerState.ENDED,YT.PlayerState.PAUSED,YT.PlayerState.CUED].includes(event.data))update(wrapper,false)},
-        onAutoplayBlocked:()=>update(wrapper,false)
+        onAutoplayBlocked:()=>update(wrapper,false),
+        onError:event=>{update(wrapper,false);showYouTubeFallback(wrapper,videoId);console.warn('YouTube player error',event.data,videoId)}
       }});
       players.push({wrapper,player});button.addEventListener('click',()=>player.getPlayerState()===YT.PlayerState.PLAYING?player.pauseVideo():playWithSound(wrapper,player));
     });
     document.addEventListener('visibilitychange',()=>{if(!autoplayPlayer)return;if(document.hidden)autoplayPlayer.pauseVideo();else if(autoplayVisible){const item=players.find(({player})=>player===autoplayPlayer);if(item)playWithSound(item.wrapper,autoplayPlayer)}});
-  });
+  }).catch(()=>wrappers.forEach(wrapper=>showYouTubeFallback(wrapper,wrapper.querySelector('.youtube-player')?.dataset.youtubeId||'')));
 }
 
 document.addEventListener('DOMContentLoaded',()=>{initContentOrder();initDetailLinks();initDetailNavigation();initModuleFocus();initNavigation();initDropdowns();initSmoothScroll();initScrollSpy();initRevealAnimations();initCarousels();initLightbox();initMobileMenu();initLazyVideos();initBpaCertificatePreviews();initFeatureVideos();initYouTubeVideos()});
