@@ -18,10 +18,7 @@
 		<a class="wordmark" href="#hero" aria-label="Eleanor Zhang — back to top">Eleanor</a>
 		<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span></span><span></span><span></span><span class="sr-only">Open menu</span></button>
 		<nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
-			<div class="nav-group">
-				<a class="nav-link" href="#home" data-section="home">Home</a>
-				<div class="dropdown"><div class="dropdown-jump"><a href="index.html#ventures">Ventures <span>Preview</span></a><a href="index.html#leadership">Leadership <span>Preview</span></a><a href="index.html#visual">Visual <span>Preview</span></a><a href="index.html#sports">Sports <span>Preview</span></a></div></div>
-			</div>
+			<a class="nav-link" href="#home" data-section="home">Home</a>
 			<div class="nav-group">
 				<a class="nav-link" href="ventures.html">Ventures</a>
 				<div class="dropdown"><a href="ventures.html#storage-platform">Storage Platform &amp; Secondhand Trading</a><a href="ventures.html#healthy-bowl">Healthy Bowl</a><a href="ventures.html#kettle-recipe">Kettle Recipe</a><a href="ventures.html#bpa">BPA</a><a href="ventures.html#china-camping-club">China Camping Club</a><a href="ventures.html#marketing-intern">Marketing Intern</a></div>
@@ -94,28 +91,28 @@
 			<nav class="section-portals reveal" aria-label="Explore portfolio sections">
 			<p class="portals-label">Continue exploring</p>
 			<div class="portals-grid">
-				<a class="portal-card" href="#ventures" data-accent="pink" data-index="02">
+				<a class="portal-card" href="ventures.html" data-accent="pink" data-index="02">
 					<span class="portal-top"><span class="portal-index">02</span><span class="portal-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"></path></svg></span></span>
 					<strong class="portal-title">Ventures</strong>
 					<small class="portal-desc">Projects and experiments</small>
 					<span class="portal-cue">Explore <em aria-hidden="true">→</em></span>
 					<span class="portal-watermark" aria-hidden="true">02</span>
 				</a>
-				<a class="portal-card" href="#leadership" data-accent="green" data-index="03">
+				<a class="portal-card" href="leadership.html" data-accent="green" data-index="03">
 					<span class="portal-top"><span class="portal-index">03</span><span class="portal-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.6 20c0-3.3 2.5-5.4 5.4-5.4s5.4 2.1 5.4 5.4"></path><path d="M16.6 6.7a3.2 3.2 0 0 1 0 6.1"></path><path d="M17.9 14.9c1.9.8 3.1 2.6 3.1 5.1"></path></svg></span></span>
 					<strong class="portal-title">Leadership</strong>
 					<small class="portal-desc">People and responsibility</small>
 					<span class="portal-cue">Explore <em aria-hidden="true">→</em></span>
 					<span class="portal-watermark" aria-hidden="true">03</span>
 				</a>
-				<a class="portal-card" href="#visual" data-accent="blue" data-index="04">
+				<a class="portal-card" href="visual.html" data-accent="blue" data-index="04">
 					<span class="portal-top"><span class="portal-index">04</span><span class="portal-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6.6" width="18" height="13" rx="2.6"></rect><circle cx="12" cy="13.1" r="3.4"></circle><path d="M8.6 6.6l1.3-2.1h4.2l1.3 2.1"></path></svg></span></span>
 					<strong class="portal-title">Visual</strong>
 					<small class="portal-desc">Documentary and photography</small>
 					<span class="portal-cue">Explore <em aria-hidden="true">→</em></span>
 					<span class="portal-watermark" aria-hidden="true">04</span>
 				</a>
-				<a class="portal-card" href="#sports" data-accent="amber" data-index="05">
+				<a class="portal-card" href="sports.html" data-accent="amber" data-index="05">
 					<span class="portal-top"><span class="portal-index">05</span><span class="portal-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.8h8v4.9a4 4 0 0 1-8 0V3.8z"></path><path d="M8 5.6H5.6A2.4 2.4 0 0 0 8 10"></path><path d="M16 5.6h2.4A2.4 2.4 0 0 1 16 10"></path><path d="M12 12.7v3.1"></path><path d="M9.4 15.8h5.2l.7 4.4H8.7l.7-4.4z"></path></svg></span></span>
 					<strong class="portal-title">Sports</strong>
 					<small class="portal-desc">Practice and performance</small>
@@ -126,7 +123,7 @@
 		</nav>
 		</section>
 		<!-- VENTURES -->
-		<section id="ventures" class="chapter chapter-ventures" data-spy="ventures">
+		<section id="ventures" class="chapter chapter-ventures" data-spy="ventures" hidden>
 			<header class="chapter-header reveal">
 				<p class="chapter-no">02 / VENTURES</p>
 				<h2>Things I've tried building.</h2>
@@ -210,7 +207,7 @@
 			</article>
 		</section>
 		<!-- LEADERSHIP -->
-		<section id="leadership" class="chapter chapter-leadership" data-spy="leadership">
+		<section id="leadership" class="chapter chapter-leadership" data-spy="leadership" hidden>
 			<header class="chapter-header reveal">
 				<p class="chapter-no">03 / LEADERSHIP</p>
 				<h2>Responsibility, practiced.</h2>
@@ -273,7 +270,7 @@
 			</div>
 		</section>
 		<!-- VISUAL -->
-		<section id="visual" class="chapter chapter-visual" data-spy="visual">
+		<section id="visual" class="chapter chapter-visual" data-spy="visual" hidden>
 			<header class="chapter-header reveal">
 				<p class="chapter-no">04 / VISUAL</p>
 				<h2>Looking closely.</h2>
@@ -316,7 +313,7 @@
 			</article>
 		</section>
 		<!-- SPORTS -->
-		<section id="sports" class="chapter chapter-sports" data-spy="sports">
+		<section id="sports" class="chapter chapter-sports" data-spy="sports" hidden>
 			<header class="chapter-header reveal">
 				<p class="chapter-no">05 / SPORTS</p>
 				<h2>Practice in motion.</h2>

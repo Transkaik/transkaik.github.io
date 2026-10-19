@@ -38,8 +38,7 @@ function initDetailNavigation(){
   const nav=document.getElementById('primary-nav');if(!nav)return;
   nav.setAttribute('aria-label','Primary navigation');
   const file=(location.pathname.split('/').pop()||'').toLowerCase();
-  const preview=`<div class="dropdown-jump">`+CHAPTERS.map(ch=>`<a href="./index.html#${ch.page.replace('.html','')}">${ch.label} <span>Preview</span></a>`).join('')+`</div>`;
-  nav.innerHTML=`<div class="nav-group"><a class="nav-link" href="./index.html#home" data-section="home">Home</a><div class="dropdown">${preview}</div></div>`+CHAPTERS.map(ch=>{
+  nav.innerHTML=`<a class="nav-link" href="./index.html#home" data-section="home">Home</a>`+CHAPTERS.map(ch=>{
     const active=file===ch.page;
     const links=ch.modules.map(([id,label])=>`<a href="./${ch.page}#${id}">${label}</a>`).join('');
     return `<div class="nav-group"><a class="nav-link${active?' active':''}" href="./${ch.page}"${active?' aria-current="page"':''}>${ch.label}</a><div class="dropdown">${links}</div></div>`;
