@@ -351,25 +351,28 @@ footer span {
 .detail-page.module-focus #figure-skating .skating-support-grid .sports-carousel{overflow:visible;border-radius:0;background:transparent;box-shadow:none}
 .detail-page.module-focus #figure-skating .competition-gallery .slides,
 .detail-page.module-focus #figure-skating .skating-support-grid .slides{display:grid;height:auto;aspect-ratio:auto;gap:16px;background:transparent;overflow:visible}
-.detail-page.module-focus #figure-skating .competition-gallery .slides{grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-flow:dense}
+.detail-page.module-focus #figure-skating .competition-gallery .slides{grid-template-columns:minmax(0,1fr) minmax(0,.85fr) minmax(0,1fr);grid-template-rows:auto clamp(250px,27vw,340px) clamp(190px,20vw,260px);grid-auto-flow:dense}
 .detail-page.module-focus #figure-skating .skating-support-grid{grid-template-columns:1fr;gap:46px}
 .detail-page.module-focus #figure-skating .skating-support-grid .slides{grid-template-columns:repeat(2,minmax(0,1fr))}
 .detail-page.module-focus #figure-skating .competition-gallery .slide,
 .detail-page.module-focus #figure-skating .skating-support-grid .slide{position:relative;inset:auto;z-index:1;aspect-ratio:4/3;margin:0;opacity:1;visibility:visible;pointer-events:auto;transition:none}
-.detail-page.module-focus #figure-skating .competition-gallery .slide{grid-column:span 2;aspect-ratio:4/3}
-.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(1){grid-column:1/-1;aspect-ratio:16/9}
-.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(5){grid-column:2/4}
-.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(6){grid-column:4/6}
+.detail-page.module-focus #figure-skating .competition-gallery .slide{aspect-ratio:auto}
+.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(1){grid-column:1/-1;grid-row:1;aspect-ratio:16/9}
+.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(2){grid-column:1;grid-row:2}
+.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(3){grid-column:2;grid-row:2/4}
+.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(4){grid-column:3;grid-row:2}
+.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(5){grid-column:1;grid-row:3}
+.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(6){grid-column:3;grid-row:3}
 .detail-page.module-focus #figure-skating .slide .zoom{border-radius:12px;background:#17151b;box-shadow:0 12px 30px rgba(39,36,43,.1)}
-.detail-page.module-focus #figure-skating .slide img{object-fit:cover}.detail-page.module-focus #figure-skating .competition-gallery .slide:not(:first-child) img{object-position:center 22%}
+.detail-page.module-focus #figure-skating .slide img{object-fit:cover}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(3) img{object-position:center}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(6) img{object-position:center 24%}
 .detail-page.module-focus #figure-skating .competition-gallery .carousel-prev,
 .detail-page.module-focus #figure-skating .competition-gallery .carousel-next,
 .detail-page.module-focus #figure-skating .competition-gallery .carousel-count,
 .detail-page.module-focus #figure-skating .skating-support-grid .carousel-prev,
 .detail-page.module-focus #figure-skating .skating-support-grid .carousel-next,
 .detail-page.module-focus #figure-skating .skating-support-grid .carousel-count{display:none}
-@media(max-width:900px){.detail-page.module-focus #figure-skating .competition-gallery .slides{grid-template-columns:repeat(4,minmax(0,1fr))}.detail-page.module-focus #figure-skating .competition-gallery .slide{grid-column:span 2}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(1){grid-column:1/-1}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(5){grid-column:span 2}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(6){grid-column:2/4}}
-@media(max-width:767px){.detail-page.module-focus .detail-content{padding-top:var(--header)}.detail-page.module-focus .detail-module.is-focused{padding-top:36px}.detail-page.module-focus .detail-module-header h2{font-size:clamp(2.7rem,13vw,4.2rem)}.detail-page.module-focus .detail-module-copy{font-size:16px}.detail-page.module-focus #figure-skating .competition-gallery .slides,.detail-page.module-focus #figure-skating .skating-support-grid .slides{grid-template-columns:1fr;grid-auto-rows:auto;gap:12px}.detail-page.module-focus #figure-skating .competition-gallery .slide,.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(n){grid-column:auto;grid-row:auto;aspect-ratio:4/3}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(1){aspect-ratio:16/9}}
+@media(max-width:900px){.detail-page.module-focus #figure-skating .competition-gallery .slides{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none}.detail-page.module-focus #figure-skating .competition-gallery .slide,.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(n){grid-column:auto;grid-row:auto;aspect-ratio:4/3}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(1){grid-column:1/-1;aspect-ratio:16/9}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(3){aspect-ratio:3/5}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(6){grid-column:1/-1;aspect-ratio:3/2}}
+@media(max-width:767px){.detail-page.module-focus .detail-content{padding-top:var(--header)}.detail-page.module-focus .detail-module.is-focused{padding-top:36px}.detail-page.module-focus .detail-module-header h2{font-size:clamp(2.7rem,13vw,4.2rem)}.detail-page.module-focus .detail-module-copy{font-size:16px}.detail-page.module-focus #figure-skating .competition-gallery .slides,.detail-page.module-focus #figure-skating .skating-support-grid .slides{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:auto;gap:12px}.detail-page.module-focus #figure-skating .competition-gallery .slide,.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(n){grid-column:auto;grid-row:auto;aspect-ratio:4/3}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(1){aspect-ratio:16/9}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(3){aspect-ratio:3/5}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(6){aspect-ratio:3/2}}
 .dropdown-jump{padding:4px 0 6px;border-bottom:1px solid var(--line);margin-bottom:6px}
 .dropdown-jump a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:7px 10px;color:var(--ink);text-decoration:none;font-size:13px}
 .dropdown-jump a span{color:var(--pink);font:700 9px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
