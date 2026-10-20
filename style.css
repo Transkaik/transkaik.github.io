@@ -484,10 +484,9 @@ footer span {
 .photo-spread-water .photo-spread-image:nth-child(1){grid-column:1/-1;grid-row:1}
 .photo-spread-water .photo-spread-image:nth-child(2){grid-column:1/6;grid-row:2;margin-top:0}
 .photo-spread-water .photo-spread-image:nth-child(3){grid-column:6/13;grid-row:2;margin-top:40px}
-.photo-spread-details .spread-path{grid-column:1/8;grid-row:1}
-.photo-spread-details .spread-portrait{grid-column:8/13;grid-row:1/3;margin-top:0}
-.photo-spread-details .spread-forest{grid-column:1/8;grid-row:2;margin-top:0}
-.photo-spread-details .spread-snow{grid-column:1/10;grid-row:3;margin-top:0}
+.photo-spread-details{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:stretch}
+.photo-story-column{display:flex;min-width:0;flex-direction:column;justify-content:space-between;gap:30px}
+.photo-story-column .photo-spread-image:nth-child(n){margin:0}
 @media(max-width:767px){
   .photo-editorial-heading{align-items:start;flex-direction:column;gap:14px}
   .photo-awards-layout{grid-template-columns:1fr;gap:40px}
