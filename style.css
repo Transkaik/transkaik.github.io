@@ -520,15 +520,10 @@ footer span {
 .module-focus #china-camping-club .editorial-gallery .slide:nth-child(3){grid-column:1/7;margin:0}
 .module-focus #china-camping-club .editorial-gallery .slide:nth-child(4){grid-column:7/13;margin:0}
 .camping-coverage{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
-.camping-article{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);max-width:920px;border-radius:0}
-.camping-article .article-card-image{height:100%;aspect-ratio:4/3}
-.camping-article .article-card-copy{padding:clamp(22px,4vw,40px);justify-content:center}
-.camping-article .article-card-copy em{margin-top:24px}
 @media(max-width:767px){
   .module-focus .editorial-gallery .slides{gap:22px}
   .module-focus .editorial-gallery .slides,.module-focus #calligraphy-club .editorial-gallery .slides,.module-focus #bpa .editorial-gallery .slides,.module-focus #soccer .editorial-gallery .slides,.module-focus #china-camping-club .editorial-gallery .slides{grid-template-columns:1fr}
   .module-focus .editorial-gallery .slides .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
   .module-focus #china-camping-club .editorial-gallery .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
   .module-focus #calligraphy-club .editorial-gallery .slide:nth-child(6) .zoom{max-width:none}
-  .camping-article{grid-template-columns:1fr}
 }
