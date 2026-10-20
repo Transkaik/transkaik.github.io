@@ -445,3 +445,38 @@ footer span {
 .slide{z-index:0;pointer-events:none;transition:opacity .7s ease,visibility 0s linear .7s}
 .slide.is-active{z-index:1;pointer-events:auto;transition:opacity .7s ease,visibility 0s}
 @media(prefers-reduced-motion:reduce){.slide,.slide.is-active{transition:none}}
+
+/* Full photo stories are enabled only when a single module is selected. */
+.module-focus .editorial-gallery{width:100%;max-width:none;margin:0;background:transparent;border-radius:0;overflow:visible;box-shadow:none}
+.module-focus .editorial-gallery .slides{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:start;gap:24px;aspect-ratio:auto;height:auto;background:transparent;overflow:visible}
+.module-focus .editorial-gallery .slide{position:relative;inset:auto;grid-column:span 3;margin:0;opacity:1;visibility:visible;pointer-events:auto;transition:none}
+.module-focus .editorial-gallery .slide:first-child{grid-column:1/-1;margin-bottom:12px}
+.module-focus .editorial-gallery .zoom{display:block;height:auto;aspect-ratio:auto;border-radius:0;overflow:hidden;background:transparent}
+.module-focus .editorial-gallery .slide img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;transform:none}
+.module-focus .editorial-gallery .slide figcaption{position:static;padding:10px 0 0;background:transparent;color:var(--muted);font-size:12px;letter-spacing:.02em}
+.module-focus .editorial-gallery .carousel-prev,.module-focus .editorial-gallery .carousel-next,.module-focus .editorial-gallery .carousel-count{display:none}
+/* Portrait calligraphy: a large opening image, followed by a three-column exhibition. */
+.module-focus #calligraphy-club .editorial-gallery .slides{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
+.module-focus #calligraphy-club .editorial-gallery .slide{grid-column:auto}
+.module-focus #calligraphy-club .editorial-gallery .slide:first-child{grid-column:1/3;grid-row:span 2;margin:0}
+/* Landscape stories with a dedicated portrait column on the right. */
+.module-focus #bpa .editorial-gallery .slides,.module-focus #soccer .editorial-gallery .slides{grid-template-columns:repeat(2,minmax(0,1fr))}
+.module-focus #bpa .editorial-gallery .slide,.module-focus #soccer .editorial-gallery .slide{grid-column:1}
+.module-focus #bpa .editorial-gallery .slide:first-child,.module-focus #soccer .editorial-gallery .slide:first-child{grid-column:1/-1}
+.module-focus #bpa .editorial-gallery .slide:nth-child(4),.module-focus #soccer .editorial-gallery .slide:nth-child(4){grid-column:2;grid-row:2/4}
+/* Four camping photographs form a wide opening and a staggered supporting spread. */
+.module-focus #china-camping-club .editorial-gallery .slide:nth-child(2){grid-column:1/4}
+.module-focus #china-camping-club .editorial-gallery .slide:nth-child(3){grid-column:4/7;margin-top:64px}
+.module-focus #china-camping-club .editorial-gallery .slide:nth-child(4){grid-column:2/6}
+.camping-coverage{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
+.camping-article{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);max-width:920px;border-radius:0}
+.camping-article .article-card-image{height:100%;aspect-ratio:4/3}
+.camping-article .article-card-copy{padding:clamp(22px,4vw,40px);justify-content:center}
+.camping-article .article-card-copy em{margin-top:24px}
+@media(max-width:767px){
+  .module-focus .editorial-gallery .slides{gap:22px}
+  .module-focus .editorial-gallery .slides,.module-focus #calligraphy-club .editorial-gallery .slides,.module-focus #bpa .editorial-gallery .slides,.module-focus #soccer .editorial-gallery .slides{grid-template-columns:1fr}
+  .module-focus .editorial-gallery .slides .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
+  .module-focus #calligraphy-club .editorial-gallery .slide:nth-child(6) .zoom{max-width:none}
+  .camping-article{grid-template-columns:1fr}
+}
