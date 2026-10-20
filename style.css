@@ -513,10 +513,12 @@ footer span {
 .module-focus #bpa .editorial-gallery .slide,.module-focus #soccer .editorial-gallery .slide{grid-column:1}
 .module-focus #bpa .editorial-gallery .slide:first-child,.module-focus #soccer .editorial-gallery .slide:first-child{grid-column:1/-1}
 .module-focus #bpa .editorial-gallery .slide:nth-child(4),.module-focus #soccer .editorial-gallery .slide:nth-child(4){grid-column:2;grid-row:2/4}
-/* Four camping photographs form a wide opening and a staggered supporting spread. */
-.module-focus #china-camping-club .editorial-gallery .slide:nth-child(2){grid-column:1/4}
-.module-focus #china-camping-club .editorial-gallery .slide:nth-child(3){grid-column:4/7;margin-top:64px}
-.module-focus #china-camping-club .editorial-gallery .slide:nth-child(4){grid-column:2/6}
+/* Camping: a larger opening pair, followed by an aligned two-photo spread. */
+.module-focus #china-camping-club .editorial-gallery .slides{grid-template-columns:repeat(12,minmax(0,1fr));gap:32px 24px;align-items:end}
+.module-focus #china-camping-club .editorial-gallery .slide:first-child{grid-column:1/8;margin:0}
+.module-focus #china-camping-club .editorial-gallery .slide:nth-child(2){grid-column:8/13;margin:0}
+.module-focus #china-camping-club .editorial-gallery .slide:nth-child(3){grid-column:1/7;margin:0}
+.module-focus #china-camping-club .editorial-gallery .slide:nth-child(4){grid-column:7/13;margin:0}
 .camping-coverage{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
 .camping-article{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);max-width:920px;border-radius:0}
 .camping-article .article-card-image{height:100%;aspect-ratio:4/3}
@@ -524,8 +526,9 @@ footer span {
 .camping-article .article-card-copy em{margin-top:24px}
 @media(max-width:767px){
   .module-focus .editorial-gallery .slides{gap:22px}
-  .module-focus .editorial-gallery .slides,.module-focus #calligraphy-club .editorial-gallery .slides,.module-focus #bpa .editorial-gallery .slides,.module-focus #soccer .editorial-gallery .slides{grid-template-columns:1fr}
+  .module-focus .editorial-gallery .slides,.module-focus #calligraphy-club .editorial-gallery .slides,.module-focus #bpa .editorial-gallery .slides,.module-focus #soccer .editorial-gallery .slides,.module-focus #china-camping-club .editorial-gallery .slides{grid-template-columns:1fr}
   .module-focus .editorial-gallery .slides .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
+  .module-focus #china-camping-club .editorial-gallery .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
   .module-focus #calligraphy-club .editorial-gallery .slide:nth-child(6) .zoom{max-width:none}
   .camping-article{grid-template-columns:1fr}
 }
