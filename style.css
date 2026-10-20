@@ -448,6 +448,7 @@ footer span {
 
 /* Full photo stories are enabled only when a single module is selected. */
 .photography-editorial{display:none}
+.healthy-bowl-gallery{margin:0 0 clamp(40px,5vw,64px)}
 .module-focus #photography .photography-topic-gallery{display:none}
 .module-focus #photography .photography-editorial{display:block}
 .module-focus #photography .detail-module-header .resource-links{display:none}
