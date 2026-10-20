@@ -139,9 +139,9 @@ function initCarousels(){
 }
 
 function initLightbox(){
-  const dialog=document.querySelector('.lightbox');const image=dialog.querySelector('img');const caption=dialog.querySelector('figcaption');const items=[...document.querySelectorAll('.zoom')];let index=0;
+  const dialog=document.querySelector('.lightbox');const image=dialog.querySelector('img');const caption=dialog.querySelector('figcaption');const allItems=[...document.querySelectorAll('.zoom')];let items=allItems;let index=0;
   const openAt=value=>{index=(value+items.length)%items.length;const source=items[index].querySelector('img');if(!source)return;image.src=source.currentSrc||source.src;image.alt=source.alt;caption.textContent=items[index].closest('figure')?.querySelector('figcaption')?.textContent||source.alt};
-  items.forEach((item,itemIndex)=>item.addEventListener('click',()=>{openAt(itemIndex);dialog.showModal()}));
+  allItems.forEach(item=>item.addEventListener('click',()=>{items=allItems.filter(button=>button.getClientRects().length>0);openAt(items.indexOf(item));dialog.showModal()}));
   dialog.querySelector('.lightbox-close').addEventListener('click',()=>dialog.close());dialog.querySelector('.lightbox-prev').addEventListener('click',()=>openAt(index-1));dialog.querySelector('.lightbox-next').addEventListener('click',()=>openAt(index+1));
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});dialog.addEventListener('keydown',event=>{if(event.key==='ArrowLeft')openAt(index-1);if(event.key==='ArrowRight')openAt(index+1)});
 }
