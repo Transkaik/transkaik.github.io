@@ -450,7 +450,7 @@ footer span {
 .photography-editorial{display:block}
 /* Cooking Club: compact chapter preview and a complete, uncropped photo story. */
 .cooking-detail-gallery{display:none}
-.module-focus #cooking-club .cooking-detail-gallery{display:block}
+.module-focus #cooking-club .cooking-detail-gallery{display:block;width:100%;max-width:900px;margin:0 auto}
 .module-focus #cooking-club .cooking-topic-gallery{display:none}
 .cooking-topic-gallery{max-width:960px;margin:0 auto;border-radius:0}
 .cooking-topic-gallery .slides{aspect-ratio:4/3}
