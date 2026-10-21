@@ -447,11 +447,8 @@ footer span {
 @media(prefers-reduced-motion:reduce){.slide,.slide.is-active{transition:none}}
 
 /* Full photo stories are enabled only when a single module is selected. */
-.photography-editorial{display:none}
+.photography-editorial{display:block}
 .healthy-bowl-gallery{margin:0 0 clamp(40px,5vw,64px)}
-.module-focus #photography .photography-topic-gallery{display:none}
-.module-focus #photography .photography-editorial{display:block}
-.module-focus #photography .detail-module-header .resource-links{display:none}
 .photography-editorial figure{margin:0;min-width:0}
 .photography-editorial .zoom{height:auto;aspect-ratio:auto;border-radius:0;background:transparent}
 .photography-editorial .zoom img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:0;transform:none;filter:none}
