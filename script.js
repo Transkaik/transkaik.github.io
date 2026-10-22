@@ -221,70 +221,103 @@ function showYouTubeFallback(wrapper,videoId){
 
 function initYouTubeVideos(){
   const wrappers=[...document.querySelectorAll('[data-youtube-video]')];if(!wrappers.length)return;
-  if(!document.querySelector('meta[name="referrer"]')){const meta=document.createElement('meta');meta.name='referrer';meta.content='strict-origin-when-cross-origin';document.head.appendChild(meta)}
-  const pageOrigin=/^https?:$/.test(location.protocol)?location.origin:'https://eleanorzhang.com.cn';
-  const pageReferrer=/^https?:$/.test(location.protocol)?location.origin+location.pathname:pageOrigin;
-  // Create playable native embeds before waiting for the optional control API.
+  const sources={
+    zXBMmOACdlw:['skating.mp4','skating6.jpg'],
+    '38G7kYwUKTI':['Figure skating competition interview.mp4',''],
+    '1vtW75_Lrbo':['Skating Teaching Assistant.mp4','Skating Teaching Assistant1.jpg']
+  };
+  const origin=location.origin;
+  const items=[];let active=null;
+  const update=(item,playing)=>{
+    item.wrapper.classList.toggle('is-playing',playing);
+    const button=item.wrapper.querySelector('.feature-video-toggle');
+    if(button)button.hidden=playing||item.local||!item.ready;
+    if(playing)clearTimeout(item.timer);
+  };
+  const pause=item=>{if(item.ready)item.local?item.video.pause():item.player.pauseVideo();clearTimeout(item.timer)};
+  const soundPrompt=item=>{
+    if(item.wrapper.querySelector('.youtube-sound-toggle'))return;
+    const button=document.createElement('button');button.type='button';button.className='youtube-sound-toggle';button.textContent='Tap for sound';
+    button.addEventListener('click',()=>play(item));item.wrapper.appendChild(button);
+  };
+  const play=item=>{
+    active=item;items.forEach(other=>{if(other!==item)pause(other)});
+    document.querySelectorAll('video').forEach(video=>{if(video!==item.video)video.pause()});
+    item.wrapper.querySelector('.youtube-sound-toggle')?.remove();
+    if(item.local){
+      item.video.muted=false;
+      item.video.play().catch(error=>{
+        if(error.name!=='NotAllowedError'||active!==item)return;
+        item.video.muted=true;soundPrompt(item);item.video.play().catch(()=>{});
+      });
+    }else if(item.ready){item.player.unMute();item.player.setVolume(100);item.player.playVideo()}
+    if(!item.local&&sources[item.id]){
+      clearTimeout(item.timer);
+      item.timer=setTimeout(()=>{if(active===item&&!item.wrapper.classList.contains('is-playing'))fallback(item)},12000);
+    }
+  };
+  const select=()=>{
+    const next=document.hidden?null:items.find(item=>!item.failed&&item.ratio>=.35);
+    if(next===active)return;
+    if(active)pause(active);active=next;if(next)play(next);
+  };
+  const fallback=item=>{
+    if(item.local)return;
+    const source=sources[item.id];
+    if(!source){showYouTubeFallback(item.wrapper,item.id);item.failed=true;select();return}
+    clearTimeout(item.timer);item.local=true;item.ready=true;
+    try{item.player?.destroy()}catch{}
+    item.wrapper.querySelector('iframe')?.remove();
+    item.wrapper.querySelector('.youtube-sound-toggle')?.remove();
+    const video=document.createElement('video');item.video=video;
+    video.controls=true;video.playsInline=true;video.preload='metadata';
+    video.src='./assets/sports/fgure skating/'+source[0];
+    if(source[1])video.poster='./assets/sports/fgure skating/'+source[1];
+    video.setAttribute('aria-label',item.title);item.wrapper.prepend(video);update(item,false);
+    video.addEventListener('play',()=>{
+      active=item;items.forEach(other=>{if(other!==item)pause(other)});
+    });
+    video.addEventListener('playing',()=>{update(item,true);if(active!==item)video.pause()});
+    video.addEventListener('pause',()=>update(item,false));
+    video.addEventListener('error',()=>{item.failed=true;showYouTubeFallback(item.wrapper,item.id);select()});
+    if(active===item&&!document.hidden)play(item);else select();
+  };
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{const item=items.find(item=>item.wrapper===entry.target);if(item)item.ratio=entry.isIntersecting?entry.intersectionRatio:0});select();
+  },{threshold:[0,.35,.6,1]});
   wrappers.forEach(wrapper=>{
     const mount=wrapper.querySelector('.youtube-player');if(!mount)return;
-    wrapper.dataset.youtubeId=mount.dataset.youtubeId;
-    const params=new URLSearchParams({enablejsapi:'1',autoplay:'0',controls:'1',playsinline:'1',rel:'0',origin:pageOrigin,widget_referrer:pageReferrer});
-    const iframe=document.createElement('iframe');iframe.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(mount.dataset.youtubeId)}?${params}`;iframe.title=mount.getAttribute('aria-label')||'YouTube video';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';mount.replaceWith(iframe);
-    const button=wrapper.querySelector('.feature-video-toggle');if(button)button.hidden=true;
-  });
-  loadYouTubeAPI().then(YT=>{
-    const players=[];let activePlayer=null;
-    const update=(wrapper,playing)=>{wrapper.classList.toggle('is-playing',playing);const button=wrapper.querySelector('.feature-video-toggle');if(!button)return;button.hidden=playing;button.setAttribute('aria-label',playing?'Pause video':'Play video');button.querySelector('span').textContent=playing?'❚❚':'▶'};
-    const pauseOthers=current=>{players.forEach(({player,ready})=>{if(ready&&player!==current)player.pauseVideo()});document.querySelectorAll('video').forEach(video=>{if(!video.paused)video.pause()})};
-    const playWithSound=(wrapper,player)=>{
-      activePlayer=player;pauseOthers(player);player.unMute();player.setVolume(100);wrapper.classList.remove('is-muted');wrapper.querySelector('.youtube-sound-toggle')?.remove();player.playVideo();
-    };
-    const selectVisiblePlayer=()=>{
-      const visible=item=>item.ready&&!item.failed&&item.ratio>=.35;
-      if(document.hidden){players.filter(item=>item.ready).forEach(item=>item.player.pauseVideo());activePlayer=null;return}
-      const current=players.find(item=>item.player===activePlayer);
-      const next=players.find(visible);
-      if(current===next)return;
-      if(current)current.player.pauseVideo();
-      activePlayer=next?.player||null;
-      if(next)playWithSound(next.wrapper,next.player);
-    };
-    const observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{const item=players.find(item=>item.wrapper===entry.target);if(item)item.ratio=entry.isIntersecting?entry.intersectionRatio:0});
-      selectVisiblePlayer();
-    },{threshold:[0,.35,.6,1]});
-    wrappers.forEach(wrapper=>{
-      const iframe=wrapper.querySelector('iframe');const button=wrapper.querySelector('.feature-video-toggle');if(!iframe||!button)return;
-      const videoId=wrapper.dataset.youtubeId;
-      const item={wrapper,player:null,ready:false,failed:false,ratio:0};players.push(item);
-      const player=new YT.Player(iframe,{events:{
-        onReady:event=>{
-          item.player=event.target;item.ready=true;observer.observe(wrapper);
-        },
-        onStateChange:event=>{
-          if(event.data===YT.PlayerState.PLAYING){
-            if(activePlayer!==player&&document.activeElement!==iframe){player.pauseVideo();return}
-            if(activePlayer!==player){activePlayer=player;pauseOthers(player)}
-            update(wrapper,true);
-          }else if([YT.PlayerState.UNSTARTED,YT.PlayerState.ENDED,YT.PlayerState.PAUSED,YT.PlayerState.CUED].includes(event.data))update(wrapper,false);
-        },
-        onAutoplayBlocked:()=>{
-          if(activePlayer!==player||item.ratio<.35)return;
-          update(wrapper,false);
-          if(player.isMuted())return;
-          player.mute();wrapper.classList.add('is-muted');
-          if(!wrapper.querySelector('.youtube-sound-toggle')){const sound=document.createElement('button');sound.type='button';sound.className='youtube-sound-toggle';sound.textContent='Tap for sound';sound.addEventListener('click',()=>playWithSound(wrapper,player));wrapper.appendChild(sound)}
-          player.playVideo();
-        },
-        onError:event=>{item.failed=true;update(wrapper,false);showYouTubeFallback(wrapper,videoId);selectVisiblePlayer();console.warn('YouTube player error',event.data,videoId)}
-      }});
-      item.player=player;button.addEventListener('click',()=>{if(!item.ready)return;player.getPlayerState()===YT.PlayerState.PLAYING?player.pauseVideo():playWithSound(wrapper,player)});
+    const item={wrapper,id:mount.dataset.youtubeId,title:mount.getAttribute('aria-label')||'Video',ratio:0,ready:false,local:false,failed:false};items.push(item);
+    const iframe=document.createElement('iframe');item.iframe=iframe;
+    const params=new URLSearchParams({enablejsapi:'1',autoplay:'0',controls:'1',playsinline:'1',rel:'0',origin,widget_referrer:origin+location.pathname});
+    iframe.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(item.id)+'?'+params;
+    iframe.title=item.title;iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';
+    mount.replaceWith(iframe);update(item,false);observer.observe(wrapper);
+    wrapper.querySelector('.feature-video-toggle')?.addEventListener('click',()=>{
+      if(item.local)return;
+      if(item.ready&&item.player.getPlayerState()===1)pause(item);else play(item);
     });
-    document.addEventListener('visibilitychange',selectVisiblePlayer);
-  }).catch(()=>wrappers.forEach(wrapper=>{
-    // Native iframe controls still work when an extension or network blocks the API.
-    wrapper.querySelector('.feature-video-toggle')?.setAttribute('hidden','');
-  }));
+  });
+  document.addEventListener('visibilitychange',select);
+  loadYouTubeAPI().then(YT=>items.forEach(item=>{
+    if(item.local)return;
+    item.player=new YT.Player(item.iframe,{events:{
+      onReady:event=>{if(item.local)return;item.player=event.target;item.ready=true;if(active===item)play(item)},
+      onStateChange:event=>{
+        if(item.local)return;
+        if(event.data===1){
+          if(active!==item&&document.activeElement!==item.iframe){item.player.pauseVideo();return}
+          active=item;items.forEach(other=>{if(other!==item)pause(other)});update(item,true);
+        }else if([-1,0,2,5].includes(event.data))update(item,false);
+      },
+      onAutoplayBlocked:()=>{
+        if(item.local||active!==item)return;
+        clearTimeout(item.timer);update(item,false);
+        if(!item.player.isMuted()){item.player.mute();soundPrompt(item);item.player.playVideo()}
+      },
+      onError:()=>fallback(item)
+    }});
+  })).catch(()=>items.forEach(item=>{if(sources[item.id])fallback(item)}));
 }
 
 document.addEventListener('DOMContentLoaded',()=>{initContentOrder();initDetailLinks();initDetailNavigation();initModuleFocus();initNavigation();initDropdowns();initSmoothScroll();initScrollSpy();initRevealAnimations();initCarousels();initLightbox();initMobileMenu();initLazyVideos();initBpaCertificatePreviews();initFeatureVideos();initYouTubeVideos()});
