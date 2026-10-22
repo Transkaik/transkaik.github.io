@@ -462,19 +462,24 @@ footer span {
 .cooking-story{margin-top:64px}
 .cooking-story-heading{padding:24px 0 22px;border-top:1px solid var(--line)}
 .cooking-story-heading h3{margin:0;font:400 clamp(1.8rem,3vw,2.6rem)/1.1 var(--serif);letter-spacing:-.025em}
-.cooking-process-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px;align-items:start}
-.cooking-food-lead{margin-bottom:32px!important}
-.cooking-detail-gallery .cooking-stove{width:78%;margin:0 auto 32px}
+.cooking-process-grid{display:grid;grid-template-columns:minmax(0,2.12fr) minmax(0,1fr);gap:24px;align-items:start}
+.cooking-process-grid .cooking-lead{grid-row:span 2}
+.cooking-prep-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-bottom:32px}
+.cooking-detail-gallery .cooking-stove{width:100%;margin:0}
 .cooking-food-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .cooking-photo-column{display:flex;min-width:0;flex-direction:column;gap:28px}
-.cooking-detail-gallery .cooking-dumplings{width:82%;margin:36px 0 0 auto}
-.cooking-table-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;gap:24px}
-.cooking-serving-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1fr);align-items:center;gap:24px;margin-top:32px}
+.cooking-finish-grid{display:grid;grid-template-columns:minmax(0,1.37fr) minmax(0,1fr);gap:24px;align-items:start;margin-top:32px}
+.cooking-detail-gallery .cooking-dumplings{width:100%;margin:0}
+.cooking-table-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:24px}
+.cooking-serving-grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1fr);align-items:start;gap:24px;margin-top:32px}
 @media(max-width:767px){
   .cooking-story{margin-top:44px}
-  .cooking-process-grid,.cooking-food-grid,.cooking-table-grid,.cooking-serving-grid{grid-template-columns:1fr;gap:28px}
-  .cooking-detail-gallery .cooking-dumplings{width:100%;margin-top:28px}
-  .cooking-detail-gallery .cooking-stove{width:100%;margin-bottom:28px}
+  .cooking-process-grid,.cooking-prep-grid,.cooking-food-grid,.cooking-finish-grid,.cooking-table-grid,.cooking-serving-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+  .cooking-process-grid .cooking-lead{grid-row:auto;grid-column:1/-1}
+  .cooking-food-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+  .cooking-photo-column{display:contents}
+  .cooking-detail-gallery figcaption{font-size:11px}
+  .cooking-detail-gallery .cooking-dumplings,.cooking-detail-gallery .cooking-stove{width:100%;margin:0}
 }
 .healthy-bowl-gallery{margin:0 0 clamp(40px,5vw,64px)}
 .photography-editorial figure{margin:0;min-width:0}
