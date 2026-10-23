@@ -67,6 +67,18 @@ function initModuleFocus(){
     const next=id?modules.find(module=>module.id===id):null;
     modules.forEach(module=>{module.classList.remove('is-focused');module.querySelector('.module-focus-bar')?.remove()});
     document.body.classList.toggle('module-focus',Boolean(next));
+    modules.forEach(module=>{
+      const title=module.querySelector('.detail-module-header h2');if(!title)return;
+      const link=title.querySelector('.topic-module-title');
+      const cue=module.querySelector('.module-detail-cue');
+      if(next){
+        if(link)link.replaceWith(...link.childNodes);
+        cue?.remove();return;
+      }
+      const url='./'+file+'#'+encodeURIComponent(module.id);
+      if(!link){const anchor=document.createElement('a');anchor.className='module-title-link topic-module-title';anchor.href=url;anchor.append(...title.childNodes);title.appendChild(anchor)}
+      if(!cue){const anchor=document.createElement('a');anchor.className='module-detail-cue';anchor.href=url;anchor.setAttribute('aria-label','View details about '+title.textContent.trim());anchor.innerHTML='View details <span aria-hidden="true">↗</span>';title.insertAdjacentElement('afterend',anchor)}
+    });
     if(!next)return;
     next.classList.add('is-focused');
     const bar=document.createElement('p');
@@ -84,10 +96,10 @@ function initDropdowns(){
     trigger.addEventListener('click',()=>{
       const group=trigger.closest('.nav-group');const open=group.classList.toggle('open');
       trigger.setAttribute('aria-expanded',String(open));
-      document.querySelectorAll('.nav-group').forEach(other=>{if(other!==group){other.classList.remove('open');other.querySelector('.nav-trigger').setAttribute('aria-expanded','false')}});
+      document.querySelectorAll('.nav-group').forEach(other=>{if(other!==group){other.classList.remove('open');other.querySelector('.nav-trigger')?.setAttribute('aria-expanded','false')}});
     });
   });
-  document.addEventListener('click',event=>{if(!event.target.closest('.nav-group'))document.querySelectorAll('.nav-group').forEach(group=>{group.classList.remove('open');group.querySelector('.nav-trigger').setAttribute('aria-expanded','false')})});
+  document.addEventListener('click',event=>{if(!event.target.closest('.nav-group'))document.querySelectorAll('.nav-group').forEach(group=>{group.classList.remove('open');group.querySelector('.nav-trigger')?.setAttribute('aria-expanded','false')})});
 }
 
 function initSmoothScroll(){

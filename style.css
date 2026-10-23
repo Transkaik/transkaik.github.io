@@ -365,6 +365,10 @@ footer span {
 
 .detail-page.module-focus .detail-toc{display:none}.detail-page.module-focus .detail-module{display:none}.detail-page.module-focus .detail-module.is-focused{display:block}
 .module-focus-bar{margin:0 0 34px}
+.module-detail-cue{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:4px 0;color:var(--muted);font:500 12px/1.5 var(--sans);letter-spacing:.04em;text-decoration:none;border-bottom:1px solid var(--line);transition:color .2s,border-color .2s}
+.module-detail-cue span{color:var(--pink);font-size:16px}
+.module-detail-cue:hover,.module-detail-cue:focus-visible{color:var(--pink);border-color:var(--pink)}
+.module-focus .module-detail-cue{display:none}
 .module-back{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);text-decoration:none;font-size:12px}
 .module-back:hover,.module-back:focus-visible{border-color:var(--pink);color:var(--pink)}
 
