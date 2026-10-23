@@ -260,6 +260,20 @@ footer span {
 .kettle-source-note{margin:32px 0 0;color:var(--muted);font-size:12px}
 .kettle-source-note a{color:inherit}
 @media(max-width:700px){.kettle-preview-copy{padding:22px}.kettle-steps,.kettle-features{grid-template-columns:1fr;gap:20px}.kettle-product-section{margin-top:40px}.kettle-features h4{margin-top:0}}
+@font-face{font-family:Kettle Fraunces;src:url('./assets/ventures/Kettle Recipe/fonts/fraunces-600.ttf') format('truetype');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:Kettle Hanken;src:url('./assets/ventures/Kettle Recipe/fonts/hanken-grotesk-400.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+.kettle-feature-showcase{padding:56px 32px 48px;border:0;background:#faf3e0;color:#2e2015}
+.kettle-feature-showcase>.sub-label{margin:0 0 20px;color:#a8562e;font-family:Kettle Hanken,Arial,sans-serif;font-size:13px;letter-spacing:.14em}
+.kettle-feature-showcase>h3{font:600 clamp(1.9rem,3.5vw,2.625rem)/1.15 Kettle Fraunces,Georgia,serif;letter-spacing:-.025em}
+.kettle-feature-showcase .kettle-features{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:44px}
+.kettle-feature-showcase .kettle-features article{padding:28px;border:1px solid #e8dcc5;border-radius:24px;background:#fdf9ef;box-shadow:0 2px 12px -4px rgba(46,32,21,.08)}
+.kettle-feature-icon{display:grid;place-items:center;width:44px;height:44px;margin-bottom:20px;border-radius:12px;background:rgba(168,86,46,.1)}
+.kettle-feature-icon.is-sage{background:rgba(111,129,86,.1)}
+.kettle-feature-icon img{width:24px;height:24px;object-fit:contain}
+.kettle-feature-showcase .kettle-features h4{margin:0 0 12px;font:600 17px/1.35 Kettle Fraunces,Georgia,serif;color:#2e2015;letter-spacing:-.01em}
+.kettle-feature-showcase .kettle-features p{font:400 13.5px/1.65 Kettle Hanken,Arial,sans-serif;color:#75624f}
+@media(max-width:1000px){.kettle-feature-showcase .kettle-features{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.kettle-feature-showcase{padding:36px 20px}.kettle-feature-showcase .kettle-features{grid-template-columns:1fr;gap:16px;margin-top:28px}.kettle-feature-showcase .kettle-features article{padding:24px}.kettle-feature-showcase>h3{font-size:30px}.kettle-feature-showcase .kettle-features p{font-size:15px}.kettle-feature-showcase .kettle-features h4{font-size:19px}}
 /* Portrait campaign films, shared by the Ventures chapter and focused detail. */
 .marketing-video-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;width:100%;max-width:960px;margin:36px auto 0;align-items:start}
 .marketing-video-card{min-width:0;margin:0}
