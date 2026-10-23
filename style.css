@@ -372,46 +372,46 @@ footer span {
 .detail-page.module-focus .detail-hero{display:none}
 .detail-page.module-focus .detail-content{padding-top:var(--header)}
 .detail-page.module-focus .detail-module.is-focused{padding-top:clamp(3rem,6vw,5.5rem)}
-.detail-page.module-focus .detail-module-header{display:block;margin-bottom:clamp(44px,6vw,72px)}
-.detail-page.module-focus .detail-module-header>div:first-child{position:relative;margin:0 auto clamp(30px,4vw,46px);padding:0 20px 26px;text-align:center}
-.detail-page.module-focus .detail-module-header>div:first-child:after{content:"";position:absolute;left:50%;bottom:0;width:72px;height:2px;border-radius:2px;background:var(--pink);transform:translateX(-50%)}
-.detail-page.module-focus .detail-module-header>div:first-child .sub-label{margin-bottom:10px}
-.detail-page.module-focus .detail-module-header h2{font-size:clamp(3rem,6vw,5.4rem);line-height:.98}
-.detail-page.module-focus .detail-module-copy{max-width:920px;margin:0 auto 0 clamp(0px,7vw,90px);font-size:17px;line-height:1.85}
+.detail-page:is(.module-focus,.sports-detail-page) .detail-module-header{display:block;margin-bottom:clamp(44px,6vw,72px)}
+.detail-page:is(.module-focus,.sports-detail-page) .detail-module-header>div:first-child{position:relative;margin:0 auto clamp(30px,4vw,46px);padding:0 20px 26px;text-align:center}
+.detail-page:is(.module-focus,.sports-detail-page) .detail-module-header>div:first-child:after{content:"";position:absolute;left:50%;bottom:0;width:72px;height:2px;border-radius:2px;background:var(--pink);transform:translateX(-50%)}
+.detail-page:is(.module-focus,.sports-detail-page) .detail-module-header>div:first-child .sub-label{margin-bottom:10px}
+.detail-page:is(.module-focus,.sports-detail-page) .detail-module-header h2{font-size:clamp(3rem,6vw,5.4rem);line-height:.98}
+.detail-page:is(.module-focus,.sports-detail-page) .detail-module-copy{max-width:920px;margin:0 auto 0 clamp(0px,7vw,90px);font-size:17px;line-height:1.85}
 
 /* FIGURE SKATING MODULE DETAIL — show every photograph at once instead of a carousel. */
-.detail-page.module-focus #figure-skating .media-meta{display:none}
-.detail-page.module-focus #figure-skating .competition-gallery .sports-carousel,
-.detail-page.module-focus #figure-skating .skating-support-grid .sports-carousel{overflow:visible;border-radius:0;background:transparent;box-shadow:none}
-.detail-page.module-focus #figure-skating .competition-gallery .slides,
-.detail-page.module-focus #figure-skating .skating-support-grid .slides{display:grid;height:auto;aspect-ratio:auto;gap:16px;background:transparent;overflow:visible}
-.detail-page.module-focus #figure-skating .competition-gallery .slides{grid-template-columns:minmax(0,1fr) minmax(0,.85fr) minmax(0,1fr);grid-template-rows:auto clamp(250px,27vw,340px) clamp(190px,20vw,260px);grid-auto-flow:dense}
-.detail-page.module-focus #figure-skating .skating-support-grid{grid-template-columns:minmax(280px,.55fr) minmax(0,1.45fr);grid-template-areas:"gallery video";gap:28px;align-items:center;padding:clamp(22px,3vw,38px)}
-.detail-page.module-focus #figure-skating .skating-support-grid>.sports-media-section{grid-area:gallery}
-.detail-page.module-focus #figure-skating .skating-support-grid>.assistant-video-card{grid-area:video;align-self:center}
-.detail-page.module-focus #figure-skating .skating-support-grid .slides{grid-template-columns:1fr;gap:12px}
-.detail-page.module-focus #figure-skating .competition-gallery .slide,
-.detail-page.module-focus #figure-skating .skating-support-grid .slide{position:relative;inset:auto;z-index:1;aspect-ratio:4/3;margin:0;opacity:1;visibility:visible;pointer-events:auto;transition:none}
-.detail-page.module-focus #figure-skating .skating-support-grid .slide:first-child{aspect-ratio:16/9}
-.detail-page.module-focus #figure-skating .competition-gallery .slide{aspect-ratio:auto}
-.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(1){grid-column:1/-1;grid-row:1;aspect-ratio:16/9}
-.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(2){grid-column:1;grid-row:2}
-.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(3){grid-column:3;grid-row:2/4}
-.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(4){grid-column:2;grid-row:2}
-.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(5){grid-column:1;grid-row:3}
-.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(6){grid-column:2;grid-row:3}
-.detail-page.module-focus #figure-skating .slide .zoom{border-radius:0;background:#17151b;box-shadow:0 12px 30px rgba(39,36,43,.1)}
-.detail-page.module-focus #figure-skating .slide img{object-fit:cover}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(3) img{object-position:center}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(6) img{object-position:center 24%}
-.detail-page.module-focus #figure-skating .competition-gallery .carousel-prev,
-.detail-page.module-focus #figure-skating .competition-gallery .carousel-next,
-.detail-page.module-focus #figure-skating .competition-gallery .carousel-count,
-.detail-page.module-focus #figure-skating .skating-support-grid .carousel-prev,
-.detail-page.module-focus #figure-skating .skating-support-grid .carousel-next,
-.detail-page.module-focus #figure-skating .skating-support-grid .carousel-count{display:none}
-@media(max-width:900px){.detail-page.module-focus #figure-skating .competition-gallery .slides{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none}.detail-page.module-focus #figure-skating .competition-gallery .slide,.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(n){grid-column:auto;grid-row:auto;aspect-ratio:4/3}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(1){grid-column:1/-1;aspect-ratio:16/9}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(3){aspect-ratio:3/5}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(6){grid-column:1/-1;aspect-ratio:3/2}}
-@media(max-width:900px){.detail-page.module-focus #figure-skating .skating-support-grid{grid-template-columns:1fr;grid-template-areas:"video" "gallery";gap:36px}.detail-page.module-focus #figure-skating .skating-support-grid .slides{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
-@media(min-width:901px){.detail-page.module-focus #figure-skating .skating-event-videos{grid-template-columns:minmax(0,1fr) 300px;align-items:start}.detail-page.module-focus #figure-skating .skating-event-videos>.sports-video-card:first-child{display:grid;grid-template-rows:minmax(0,1fr) auto;height:533px}.detail-page.module-focus #figure-skating .skating-event-videos>.sports-video-card:first-child .sports-video-frame.landscape{height:100%;aspect-ratio:auto}}
-@media(max-width:767px){.detail-page.module-focus .detail-content{padding-top:var(--header)}.detail-page.module-focus .detail-module.is-focused{padding-top:36px}.detail-page.module-focus .detail-module-header h2{font-size:clamp(2.7rem,13vw,4.2rem)}.detail-page.module-focus .detail-module-copy{max-width:none;margin-left:0;font-size:16px}.detail-page.module-focus #figure-skating .competition-gallery .slides,.detail-page.module-focus #figure-skating .skating-support-grid .slides{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:auto;gap:12px}.detail-page.module-focus #figure-skating .competition-gallery .slide,.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(n){grid-column:auto;grid-row:auto;aspect-ratio:4/3}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(1){aspect-ratio:16/9}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(3){aspect-ratio:3/5}.detail-page.module-focus #figure-skating .competition-gallery .slide:nth-child(6){aspect-ratio:3/2}}
+.sports-detail-page #figure-skating .media-meta{display:none}
+.sports-detail-page #figure-skating .competition-gallery .sports-carousel,
+.sports-detail-page #figure-skating .skating-support-grid .sports-carousel{overflow:visible;border-radius:0;background:transparent;box-shadow:none}
+.sports-detail-page #figure-skating .competition-gallery .slides,
+.sports-detail-page #figure-skating .skating-support-grid .slides{display:grid;height:auto;aspect-ratio:auto;gap:16px;background:transparent;overflow:visible}
+.sports-detail-page #figure-skating .competition-gallery .slides{grid-template-columns:minmax(0,1fr) minmax(0,.85fr) minmax(0,1fr);grid-template-rows:auto clamp(250px,27vw,340px) clamp(190px,20vw,260px);grid-auto-flow:dense}
+.sports-detail-page #figure-skating .skating-support-grid{grid-template-columns:minmax(280px,.55fr) minmax(0,1.45fr);grid-template-areas:"gallery video";gap:28px;align-items:center;padding:clamp(22px,3vw,38px)}
+.sports-detail-page #figure-skating .skating-support-grid>.sports-media-section{grid-area:gallery}
+.sports-detail-page #figure-skating .skating-support-grid>.assistant-video-card{grid-area:video;align-self:center}
+.sports-detail-page #figure-skating .skating-support-grid .slides{grid-template-columns:1fr;gap:12px}
+.sports-detail-page #figure-skating .competition-gallery .slide,
+.sports-detail-page #figure-skating .skating-support-grid .slide{position:relative;inset:auto;z-index:1;aspect-ratio:4/3;margin:0;opacity:1;visibility:visible;pointer-events:auto;transition:none}
+.sports-detail-page #figure-skating .skating-support-grid .slide:first-child{aspect-ratio:16/9}
+.sports-detail-page #figure-skating .competition-gallery .slide{aspect-ratio:auto}
+.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(1){grid-column:1/-1;grid-row:1;aspect-ratio:16/9}
+.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(2){grid-column:1;grid-row:2}
+.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(3){grid-column:3;grid-row:2/4}
+.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(4){grid-column:2;grid-row:2}
+.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(5){grid-column:1;grid-row:3}
+.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(6){grid-column:2;grid-row:3}
+.sports-detail-page #figure-skating .slide .zoom{border-radius:0;background:#17151b;box-shadow:0 12px 30px rgba(39,36,43,.1)}
+.sports-detail-page #figure-skating .slide img{object-fit:cover}.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(3) img{object-position:center}.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(6) img{object-position:center 24%}
+.sports-detail-page #figure-skating .competition-gallery .carousel-prev,
+.sports-detail-page #figure-skating .competition-gallery .carousel-next,
+.sports-detail-page #figure-skating .competition-gallery .carousel-count,
+.sports-detail-page #figure-skating .skating-support-grid .carousel-prev,
+.sports-detail-page #figure-skating .skating-support-grid .carousel-next,
+.sports-detail-page #figure-skating .skating-support-grid .carousel-count{display:none}
+@media(max-width:900px){.sports-detail-page #figure-skating .competition-gallery .slides{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none}.sports-detail-page #figure-skating .competition-gallery .slide,.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(n){grid-column:auto;grid-row:auto;aspect-ratio:4/3}.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(1){grid-column:1/-1;aspect-ratio:16/9}.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(3){aspect-ratio:3/5}.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(6){grid-column:1/-1;aspect-ratio:3/2}}
+@media(max-width:900px){.sports-detail-page #figure-skating .skating-support-grid{grid-template-columns:1fr;grid-template-areas:"video" "gallery";gap:36px}.sports-detail-page #figure-skating .skating-support-grid .slides{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
+@media(min-width:901px){.sports-detail-page #figure-skating .skating-event-videos{grid-template-columns:minmax(0,1fr) 300px;align-items:start}.sports-detail-page #figure-skating .skating-event-videos>.sports-video-card:first-child{display:grid;grid-template-rows:minmax(0,1fr) auto;height:533px}.sports-detail-page #figure-skating .skating-event-videos>.sports-video-card:first-child .sports-video-frame.landscape{height:100%;aspect-ratio:auto}}
+@media(max-width:767px){.detail-page.module-focus .detail-content{padding-top:var(--header)}.detail-page.module-focus .detail-module.is-focused{padding-top:36px}.detail-page:is(.module-focus,.sports-detail-page) .detail-module-header h2{font-size:clamp(2.7rem,13vw,4.2rem)}.detail-page:is(.module-focus,.sports-detail-page) .detail-module-copy{max-width:none;margin-left:0;font-size:16px}.sports-detail-page #figure-skating .competition-gallery .slides,.sports-detail-page #figure-skating .skating-support-grid .slides{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:auto;gap:12px}.sports-detail-page #figure-skating .competition-gallery .slide,.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(n){grid-column:auto;grid-row:auto;aspect-ratio:4/3}.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(1){aspect-ratio:16/9}.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(3){aspect-ratio:3/5}.sports-detail-page #figure-skating .competition-gallery .slide:nth-child(6){aspect-ratio:3/2}}
 .dropdown-jump{padding:4px 0 6px;border-bottom:1px solid var(--line);margin-bottom:6px}
 .dropdown-jump a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:7px 10px;color:var(--ink);text-decoration:none;font-size:13px}
 .dropdown-jump a span{color:var(--pink);font:700 9px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
@@ -568,23 +568,23 @@ footer span {
   .photo-spread .photo-spread-image:nth-child(n){grid-column:1;grid-row:auto;margin-top:0}
   .photo-story+.photo-story{margin-top:56px}
 }
-.module-focus .editorial-gallery{width:100%;max-width:none;margin:0;background:transparent;border-radius:0;overflow:visible;box-shadow:none}
-.module-focus .editorial-gallery .slides{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:start;gap:24px;aspect-ratio:auto;height:auto;background:transparent;overflow:visible}
-.module-focus .editorial-gallery .slide{position:relative;inset:auto;grid-column:span 3;margin:0;opacity:1;visibility:visible;pointer-events:auto;transition:none}
-.module-focus .editorial-gallery .slide:first-child{grid-column:1/-1;margin-bottom:12px}
-.module-focus .editorial-gallery .zoom{display:block;height:auto;aspect-ratio:auto;border-radius:0;overflow:hidden;background:transparent}
-.module-focus .editorial-gallery .slide img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;transform:none}
-.module-focus .editorial-gallery .slide figcaption{position:static;padding:10px 0 0;background:transparent;color:var(--muted);font-size:12px;letter-spacing:.02em}
-.module-focus .editorial-gallery .carousel-prev,.module-focus .editorial-gallery .carousel-next,.module-focus .editorial-gallery .carousel-count{display:none}
+:is(.module-focus,.sports-detail-page) .editorial-gallery{width:100%;max-width:none;margin:0;background:transparent;border-radius:0;overflow:visible;box-shadow:none}
+:is(.module-focus,.sports-detail-page) .editorial-gallery .slides{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:start;gap:24px;aspect-ratio:auto;height:auto;background:transparent;overflow:visible}
+:is(.module-focus,.sports-detail-page) .editorial-gallery .slide{position:relative;inset:auto;grid-column:span 3;margin:0;opacity:1;visibility:visible;pointer-events:auto;transition:none}
+:is(.module-focus,.sports-detail-page) .editorial-gallery .slide:first-child{grid-column:1/-1;margin-bottom:12px}
+:is(.module-focus,.sports-detail-page) .editorial-gallery .zoom{display:block;height:auto;aspect-ratio:auto;border-radius:0;overflow:hidden;background:transparent}
+:is(.module-focus,.sports-detail-page) .editorial-gallery .slide img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;transform:none}
+:is(.module-focus,.sports-detail-page) .editorial-gallery .slide figcaption{position:static;padding:10px 0 0;background:transparent;color:var(--muted);font-size:12px;letter-spacing:.02em}
+:is(.module-focus,.sports-detail-page) .editorial-gallery .carousel-prev,:is(.module-focus,.sports-detail-page) .editorial-gallery .carousel-next,:is(.module-focus,.sports-detail-page) .editorial-gallery .carousel-count{display:none}
 /* Portrait calligraphy: a large opening image, followed by a three-column exhibition. */
 .module-focus #calligraphy-club .editorial-gallery .slides{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
 .module-focus #calligraphy-club .editorial-gallery .slide{grid-column:auto}
 .module-focus #calligraphy-club .editorial-gallery .slide:first-child{grid-column:1/3;grid-row:span 2;margin:0}
 /* Landscape stories with a dedicated portrait column on the right. */
-.module-focus #bpa .editorial-gallery .slides,.module-focus #soccer .editorial-gallery .slides{grid-template-columns:repeat(2,minmax(0,1fr))}
-.module-focus #bpa .editorial-gallery .slide,.module-focus #soccer .editorial-gallery .slide{grid-column:1}
-.module-focus #bpa .editorial-gallery .slide:first-child,.module-focus #soccer .editorial-gallery .slide:first-child{grid-column:1/-1}
-.module-focus #bpa .editorial-gallery .slide:nth-child(4),.module-focus #soccer .editorial-gallery .slide:nth-child(4){grid-column:2;grid-row:2/4}
+.module-focus #bpa .editorial-gallery .slides,:is(.module-focus,.sports-detail-page) #soccer .editorial-gallery .slides{grid-template-columns:repeat(2,minmax(0,1fr))}
+.module-focus #bpa .editorial-gallery .slide,:is(.module-focus,.sports-detail-page) #soccer .editorial-gallery .slide{grid-column:1}
+.module-focus #bpa .editorial-gallery .slide:first-child,:is(.module-focus,.sports-detail-page) #soccer .editorial-gallery .slide:first-child{grid-column:1/-1}
+.module-focus #bpa .editorial-gallery .slide:nth-child(4),:is(.module-focus,.sports-detail-page) #soccer .editorial-gallery .slide:nth-child(4){grid-column:2;grid-row:2/4}
 /* Camping: a full-width lead, then one large photograph beside two smaller ones. */
 .module-focus #china-camping-club .editorial-gallery .slides{grid-template-columns:minmax(0,2.3fr) minmax(0,1fr);gap:24px;align-items:start}
 .module-focus #china-camping-club .editorial-gallery .slide:first-child{grid-column:1/-1;margin:0}
@@ -598,9 +598,9 @@ footer span {
 }
 .camping-coverage{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
 @media(max-width:767px){
-  .module-focus .editorial-gallery .slides{gap:22px}
-  .module-focus .editorial-gallery .slides,.module-focus #calligraphy-club .editorial-gallery .slides,.module-focus #bpa .editorial-gallery .slides,.module-focus #soccer .editorial-gallery .slides,.module-focus #china-camping-club .editorial-gallery .slides{grid-template-columns:1fr}
-  .module-focus .editorial-gallery .slides .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
+  :is(.module-focus,.sports-detail-page) .editorial-gallery .slides{gap:22px}
+  :is(.module-focus,.sports-detail-page) .editorial-gallery .slides,.module-focus #calligraphy-club .editorial-gallery .slides,.module-focus #bpa .editorial-gallery .slides,:is(.module-focus,.sports-detail-page) #soccer .editorial-gallery .slides,.module-focus #china-camping-club .editorial-gallery .slides{grid-template-columns:1fr}
+  :is(.module-focus,.sports-detail-page) .editorial-gallery .slides .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
   .module-focus #china-camping-club .editorial-gallery .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
   .module-focus #calligraphy-club .editorial-gallery .slide:nth-child(6) .zoom{max-width:none}
 }

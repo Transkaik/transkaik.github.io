@@ -126,7 +126,7 @@ function initCarousels(){
   document.querySelectorAll('[data-carousel]').forEach(carousel=>{
     carousel.dataset.index='0';
     let timer;const interval=2400;
-    const restart=()=>{clearInterval(timer);if(document.body.classList.contains('module-focus')&&(carousel.classList.contains('editorial-gallery')||carousel.classList.contains('cooking-topic-gallery')))return;if(interval>0&&!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>showSlide(carousel,Number(carousel.dataset.index)+1),interval)};
+    const restart=()=>{clearInterval(timer);const sports=document.body.classList.contains('sports-detail-page');if(sports&&(carousel.closest('#figure-skating')||carousel.classList.contains('editorial-gallery')))return;if(document.body.classList.contains('module-focus')&&(carousel.classList.contains('editorial-gallery')||carousel.classList.contains('cooking-topic-gallery')))return;if(interval>0&&!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>showSlide(carousel,Number(carousel.dataset.index)+1),interval)};
     window.addEventListener('hashchange',restart);
     carousel.querySelector('.carousel-prev')?.addEventListener('click',()=>{showSlide(carousel,Number(carousel.dataset.index)-1);restart()});
     carousel.querySelector('.carousel-next')?.addEventListener('click',()=>{showSlide(carousel,Number(carousel.dataset.index)+1);restart()});
