@@ -237,7 +237,7 @@ function initYouTubeVideos(){
   });
   loadYouTubeAPI().then(YT=>{
     const players=[];let activePlayer=null;
-    const update=(wrapper,playing)=>{wrapper.classList.toggle('is-playing',playing);const button=wrapper.querySelector('.feature-video-toggle');if(!button)return;button.hidden=playing;button.setAttribute('aria-label',playing?'Pause video':'Play video');button.querySelector('span').textContent=playing?'❚❚':'▶'};
+    const update=(wrapper,playing)=>{wrapper.classList.toggle('is-playing',playing);if(playing)wrapper.classList.add('has-started');const button=wrapper.querySelector('.feature-video-toggle');if(!button)return;button.hidden=playing;button.setAttribute('aria-label',playing?'Pause video':'Play video');button.querySelector('span').textContent=playing?'❚❚':'▶'};
     const pauseOthers=current=>{players.forEach(({player,ready})=>{if(ready&&player!==current)player.pauseVideo()});document.querySelectorAll('video').forEach(video=>{if(!video.paused)video.pause()})};
     const playWithSound=(wrapper,player)=>{
       activePlayer=player;pauseOthers(player);player.unMute();player.setVolume(100);wrapper.classList.remove('is-muted');wrapper.querySelector('.youtube-sound-toggle')?.remove();player.playVideo();
@@ -262,7 +262,7 @@ function initYouTubeVideos(){
       const item={wrapper,player:null,ready:false,failed:false,ratio:0};players.push(item);
       const player=new YT.Player(iframe,{events:{
         onReady:event=>{
-          item.player=event.target;item.ready=true;observer.observe(wrapper);
+          item.player=event.target;item.ready=true;update(wrapper,false);observer.observe(wrapper);
         },
         onStateChange:event=>{
           if(event.data===YT.PlayerState.PLAYING){
@@ -287,6 +287,7 @@ function initYouTubeVideos(){
   }).catch(()=>wrappers.forEach(wrapper=>{
     // Native iframe controls still work when an extension or network blocks the API.
     wrapper.querySelector('.feature-video-toggle')?.setAttribute('hidden','');
+    wrapper.querySelector('.youtube-poster')?.remove();
   }));
 }
 
