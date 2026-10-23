@@ -235,8 +235,16 @@ footer span {
   text-overflow: clip;
 }
 
-/* Match Marketing Intern media to Kettle Recipe's 16:9 media-wide frame. */
-#marketing-intern > .marketing-media {width:100%;margin-top:28px}
+/* Portrait campaign films, shared by the Ventures chapter and focused detail. */
+.marketing-video-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;width:100%;max-width:960px;margin:36px auto 0;align-items:start}
+.marketing-video-card{min-width:0;margin:0}
+.marketing-video-frame{aspect-ratio:9/16;border-radius:0;box-shadow:0 12px 28px rgba(39,36,43,.08)}
+.marketing-video-card figcaption{display:flex;align-items:baseline;gap:12px;margin-top:16px;font:400 19px/1.4 var(--serif)}
+.marketing-video-card figcaption>span{color:var(--pink);font:700 11px/1.4 var(--sans);letter-spacing:.12em}
+@media(max-width:700px){
+  .marketing-video-gallery{grid-template-columns:1fr;max-width:340px;gap:36px}
+  .marketing-video-card figcaption{margin-top:12px}
+}
 
 /* Keep the documentary frame and its image centered in the Visual section. */
 #documentary > .cinema {width:100%;max-width:var(--max);margin-left:auto;margin-right:auto}
