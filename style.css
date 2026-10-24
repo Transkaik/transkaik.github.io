@@ -1125,12 +1125,3 @@ footer span {
   .editorial-home .eh-entry i{font-size:26px}
 }
 @media(max-width:900px){.detail-page .menu-toggle>span:not(.sr-only){background:var(--ink)}}
-
-/* A narrower opening spread, with the photograph and introduction drawn inward. */
-@media(min-width:901px){
-  .editorial-home .eh-hero{width:min(100%,1280px);padding-inline:clamp(36px,4.5vw,64px);column-gap:28px}
-  .editorial-home .eh-hero-image{grid-column:1/7}
-  .editorial-home .eh-opening-intro{grid-column:7/13;max-width:none}
-  .editorial-home .eh-title-block h1{font-size:clamp(42px,4.8vw,68px)}
-  .editorial-home .eh-title-block h1 em{font-size:clamp(56px,6.4vw,90px)}
-}
