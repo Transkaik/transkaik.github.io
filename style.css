@@ -1088,7 +1088,7 @@ footer span {
 @media(prefers-reduced-motion:reduce){.editorial-home *{scroll-behavior:auto!important}}
 
 /* Shared editorial chapters: one reading/media edge, quiet alternating paper bands. */
-.detail-page.full-stories{--story-width:1180px;--story-title:#b34d70;--story-paper:#fcfaf7;--story-paper-alt:#f1ede6}
+.detail-page.full-stories{--story-width:1180px;--story-title:#ed4f87;--story-paper:#fcfaf7;--story-paper-alt:#f1ede6}
 .detail-page.full-stories .detail-content{background:var(--story-paper)}
 .detail-page.full-stories .detail-module{
   width:100%;max-width:none;margin:0;
@@ -1101,9 +1101,14 @@ footer span {
 .detail-page.full-stories .detail-module-header>div:first-child{margin:0 0 30px;padding:0 0 24px;text-align:left}
 .detail-page.full-stories .detail-module-header>div:first-child:after{left:0;width:64px;background:var(--story-title);transform:none;border-radius:0}
 .detail-page.full-stories .detail-module-header h2{max-width:100%;color:var(--story-title);font-size:clamp(42px,5.5vw,76px);line-height:1.06;text-wrap:balance}
+.detail-page.full-stories .detail-hero h1,.detail-page.full-stories .detail-module-header h2{font-family:'Bodoni Moda',var(--serif);font-weight:400;letter-spacing:-.035em}
+.detail-page.full-stories .detail-hero h1{color:var(--story-title)}
 .detail-page.full-stories .detail-module-copy{width:100%;max-width:none;margin:0;font-size:17px;line-height:1.75;color:#625e59}
 .detail-page.full-stories .detail-module-copy p{margin-bottom:20px;overflow-wrap:normal}
 .detail-page.full-stories .detail-module h3{color:#625158}
+.camping-article-link{display:inline-flex;align-items:center;gap:16px;margin-top:4px;padding:10px 18px;border:1px solid #d9a8ba;color:#9f345a;background:transparent;font:500 14px/1.5 var(--sans);text-decoration:none;transition:background .2s,border-color .2s}
+.camping-article-link:hover,.camping-article-link:focus-visible{background:#f9e5ec;border-color:#ed4f87}
+.camping-article-link span{color:#ed4f87}
 .detail-page.full-stories #cooking-club .cooking-detail-gallery,
 .detail-page.full-stories .detail-module>.media-carousel,
 .detail-page.full-stories .detail-module>.detail-media-grid,

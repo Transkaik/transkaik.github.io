@@ -288,9 +288,10 @@ function initYouTubeVideos(){
       activePlayer=player;pauseOthers(player);player.unMute();player.setVolume(100);wrapper.classList.remove('is-muted');wrapper.querySelector('.youtube-sound-toggle')?.remove();player.playVideo();
     };
     const selectVisiblePlayer=()=>{
-      const visible=item=>item.ready&&!item.failed&&item.ratio>=.35;
+      const visible=item=>item.ready&&!item.failed&&!item.manual&&item.ratio>=.35;
       if(document.hidden){players.filter(item=>item.ready).forEach(item=>item.player.pauseVideo());activePlayer=null;return}
       const current=players.find(item=>item.player===activePlayer);
+      if(current?.manual&&current.ready&&!current.failed&&current.ratio>=.35)return;
       const next=players.find(visible);
       if(current===next)return;
       if(current)current.player.pauseVideo();
@@ -304,7 +305,7 @@ function initYouTubeVideos(){
     wrappers.forEach(wrapper=>{
       const iframe=wrapper.querySelector('iframe');const button=wrapper.querySelector('.feature-video-toggle');if(!iframe||!button)return;
       const videoId=wrapper.dataset.youtubeId;
-      const item={wrapper,player:null,ready:false,failed:false,ratio:0};players.push(item);
+      const item={wrapper,player:null,ready:false,failed:false,ratio:0,manual:Boolean(wrapper.closest('#marketing-intern'))};players.push(item);
       const player=new YT.Player(iframe,{events:{
         onReady:event=>{
           item.player=event.target;item.ready=true;update(wrapper,false);observer.observe(wrapper);
