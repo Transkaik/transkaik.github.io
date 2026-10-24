@@ -1277,16 +1277,17 @@ footer span {
 }
 
 /* 首页页头：Home 照片虚化沉入背景 → 主题色薄纱叠层 → 前景文字（与专题页同一套层次） */
-.editorial-home .eh-hero{position:relative;isolation:isolate;overflow:hidden}
+.editorial-home .eh-hero{position:relative;isolation:isolate;overflow:hidden;background:var(--eh-paper)}
 .editorial-home .eh-hero:before{
   content:"";
   position:absolute;
   inset:0;
   z-index:-1;
-  background:linear-gradient(100deg,rgba(252,250,247,.9),rgba(251,233,238,.84) 46%,rgba(238,241,250,.8));
+  background:linear-gradient(90deg,#fcfaf7 0%,rgba(252,250,247,.96) 35%,rgba(252,250,247,.78) 57%,rgba(252,250,247,.57) 100%);
 }
 .eh-hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
-.eh-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 45%;transform:scale(1.18);filter:blur(22px) saturate(1.02) brightness(1.05)}
+.eh-hero-bg img{position:absolute;right:0;top:0;width:64%;height:100%;object-fit:cover;object-position:center 62%;transform:none;filter:saturate(.9);mask-image:linear-gradient(90deg,transparent,#000 18%)}
 @media(max-width:767px){
-  .eh-hero-bg img{filter:blur(14px) saturate(1.02) brightness(1.05)}
+  .eh-hero-bg img{width:100%;object-position:48% center;filter:saturate(.85);mask-image:none}
+  .editorial-home .eh-hero:before{background:linear-gradient(180deg,rgba(252,250,247,.9),rgba(252,250,247,.84) 56%,rgba(252,250,247,.64))}
 }
