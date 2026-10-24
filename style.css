@@ -1195,6 +1195,13 @@ footer span {
 .ventures-page #detail-main #kettle-recipe{--block-bg:#fff;--block-line:#ece6e0}
 .ventures-page #detail-main #bpa{--block-bg:#f4f7fc;--block-line:#e3eaf6}
 
+/* Former blush blocks: white paper with a stronger rose outline. */
+.topic-blocks:is(.ventures-page,.leadership-page) #detail-main .detail-module:nth-of-type(3n+2){
+  --block-bg:#fff;
+  border:3px solid #ed4f87;
+  padding:calc(var(--block-pad) - 2px);
+}
+
 /* 板块标题：编号 + 大衬线标题在上，正文在下（上下排），下方细分隔线 */
 .topic-blocks #detail-main .detail-module-header{
   display:block;
