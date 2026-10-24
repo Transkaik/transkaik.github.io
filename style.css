@@ -1153,16 +1153,16 @@ footer span {
 }
 
 /* Assistant Coach: teaching photographs and video now live together in Leadership. */
-.coach-media-layout{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:32px;align-items:center;width:100%}
+.coach-media-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:36px;align-items:start;width:100%}
 .coach-photos,.coach-photo-grid{min-width:0}
-.coach-photo-grid{display:grid;gap:16px}
+.coach-photo-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,3fr);gap:24px;align-items:start}
 .coach-photo-grid figure{margin:0;min-width:0}
 .coach-photo-grid .zoom{height:auto;border-radius:0}
 .coach-photo-grid img{width:100%;height:auto;object-fit:contain;transform:none;border-radius:0}
-.coach-media-layout .assistant-video-card{margin:0;align-self:center}
-.coach-media-layout .sports-video-frame{border-radius:0;box-shadow:none}
+.coach-media-layout .assistant-video-card{width:100%;max-width:none;margin:0;align-self:start}
+.coach-media-layout .sports-video-frame{width:100%;aspect-ratio:16/9;border-radius:0;box-shadow:none}
 .coach-media-layout .sports-media-heading h3{font:400 clamp(24px,2.5vw,34px)/1.1 var(--serif)}
-@media(max-width:900px){.coach-media-layout{grid-template-columns:1fr;gap:30px}.coach-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
+@media(max-width:900px){.coach-media-layout{gap:28px}.coach-photo-grid{gap:18px}}
 @media(max-width:600px){.coach-photo-grid{grid-template-columns:1fr}}
 
 /* 首页介绍模块：底色块与底部玫红细线铺满整屏，内容仍保持 1280px 阅读宽度 */
