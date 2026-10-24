@@ -1130,6 +1130,28 @@ footer span {
 }
 @media(max-width:900px){.detail-page .menu-toggle>span:not(.sr-only){background:var(--ink)}}
 
+/* Head Ambassador: a lead diptych followed by a landscape/portrait contact strip. */
+.ambassador-gallery{width:100%;margin:0}
+.ambassador-feature{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:24px;align-items:start}
+.ambassador-moments{display:grid;grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr));gap:20px;align-items:start;margin-top:36px}
+.ambassador-photo{min-width:0;margin:0}
+.ambassador-gallery .zoom{height:auto;aspect-ratio:auto;border-radius:0;background:transparent}
+.ambassador-gallery .zoom img{width:100%;height:auto;object-fit:contain;border-radius:0;transform:none}
+.ambassador-photo figcaption{margin:10px 0 0;color:var(--muted);font:400 12px/1.5 var(--sans)}
+@media(max-width:900px){
+  .ambassador-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
+  .ambassador-feature,.ambassador-moments{display:contents}
+  .ambassador-lead{order:1;grid-column:1/-1}
+  .ambassador-conversation{order:2}
+  .ambassador-introduction{order:3}
+  .ambassador-welcome{order:4;grid-column:1/-1}
+  .ambassador-campus{order:5}
+  .ambassador-tour{order:6}
+  .ambassador-gallery .ambassador-conversation .zoom{aspect-ratio:2/3;display:grid;align-items:center}
+  .ambassador-gallery .ambassador-conversation img{height:auto}
+  .ambassador-photo figcaption{margin-top:8px;font-size:11px}
+}
+
 /* 首页介绍模块：底色块与底部玫红细线铺满整屏，内容仍保持 1280px 阅读宽度 */
 @media(min-width:601px){
   .editorial-home .eh-hero{
