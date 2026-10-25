@@ -1280,6 +1280,7 @@ footer span {
 
 /* 各页用站内现有颜色做不同的叠层，取景位置按题材微调 */
 .ventures-page .topic-hero{--topic-overlay:linear-gradient(100deg,rgba(255,255,255,.95),rgba(255,255,255,.9) 46%,rgba(255,255,255,.84))}
+.ventures-page .topic-hero-image img{object-position:center 8%}
 .leadership-page .topic-hero{--topic-overlay:linear-gradient(100deg,rgba(255,255,255,.94),rgba(255,255,255,.88) 44%,rgba(255,255,255,.82))}
 .visual-page .topic-hero{--topic-overlay:linear-gradient(100deg,rgba(255,255,255,.9),rgba(255,255,255,.86) 46%,rgba(255,255,255,.82))}
 .sports-detail-page .topic-hero{--topic-overlay:linear-gradient(100deg,rgba(255,255,255,.94),rgba(255,255,255,.88) 45%,rgba(255,255,255,.8))}
