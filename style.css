@@ -1481,13 +1481,14 @@ footer{padding-top:12px;padding-bottom:12px}
 .detail-hero.topic-hero .detail-toc a,
 .detail-hero.topic-hero .detail-toc a[aria-current]{
   --toc-fade:calc(var(--toc-index)*var(--toc-step));
-  background:color-mix(in srgb,#f598ba,#fff5f9 var(--toc-fade));
+  background:transparent;
   border-color:color-mix(in srgb,#ed568d,#eecbd9 var(--toc-fade));
   color:#8d2149;
 }
 .detail-hero.topic-hero .detail-toc a:hover,
 .detail-hero.topic-hero .detail-toc a:focus-visible{
-  background:#f9bed4;border-color:#df477f;color:#741437;
+  background:color-mix(in srgb,#f598ba,#fff5f9 var(--toc-fade));
+  border-color:#df477f;color:#741437;
 }
 :is(.kicker,.chapter-no,.sub-label,.media-meta,.photo-award-number),
 .detail-page :is(.chapter-no,.sub-label,.media-meta,.photo-award-number),
