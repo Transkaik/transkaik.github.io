@@ -1199,6 +1199,13 @@ footer span {
   --block-outline:var(--color-rose-border);
   --block-bg:var(--color-surface);
   --block-line:var(--color-rose-rule);
+  /* 悬浮阴影：均由站内既有色派生（近黑 ink / 玫红 rose）
+     环境光层负责「浮起」，接触层负责「纸边」 */
+  --shadow-ambient:0 8px 20px rgba(39,36,43,.07);
+  --shadow-contact:0 2px 5px rgba(39,36,43,.04);
+  --shadow-rose-ambient:0 10px 24px rgba(237,79,135,.10);
+  --shadow-rose-contact:0 3px 7px rgba(39,36,43,.05);
+  --block-shadow:var(--shadow-ambient),var(--shadow-contact);
 }
 
 /* 章节块：每个模块一个独立大板块，外层留出象牙白画布（Ventures / Leadership） */
@@ -1213,12 +1220,16 @@ footer span {
   background:var(--block-bg);
   border:var(--block-outline-width) solid var(--block-outline);
   border-radius:var(--block-radius);
-  box-shadow:0 14px 34px -28px rgba(39,36,43,.18);
+  box-shadow:var(--block-shadow);
   scroll-margin-top:92px;
 }
 .topic-blocks #detail-main .detail-module:last-child{margin-bottom:0}
-/* 只用两种样式交替：白块（玫红 2px 描边） / 浅玫红块（白色 2px 描边） */
-.topic-blocks #detail-main .detail-module:nth-of-type(even){--block-bg:var(--color-rose-soft);--block-outline:var(--color-rose-border-strong)}
+/* 只用两种样式交替：白块（玫红 2px 描边 + 中性灰粉阴影） / 浅玫红块（白色 2px 描边 + 玫瑰调阴影） */
+.topic-blocks #detail-main .detail-module:nth-of-type(even){
+  --block-bg:var(--color-rose-soft);
+  --block-outline:var(--color-rose-border-strong);
+  --block-shadow:var(--shadow-rose-ambient),var(--shadow-rose-contact);
+}
 
 /* 板块标题：编号 + 大衬线标题在上，正文在下（上下排），下方细分隔线 */
 .topic-blocks #detail-main .detail-module-header{
