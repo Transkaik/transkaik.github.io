@@ -1396,12 +1396,13 @@ footer span {
 @media(max-width:900px){.dance-feature{grid-template-columns:1fr;gap:24px}.dance-feature-side{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.dance-sequence-grid{gap:24px 18px}}
 @media(max-width:600px){.dance-feature-side,.dance-sequence-grid{grid-template-columns:1fr;gap:24px}.dance-sequence-grid{margin-top:24px}}
 
-/* Shared compact sign-off: name and email stay together instead of separate rows. */
+/* Jazz dance: ordered two-by-two on desktop, explicitly manual playback. */
 .dance-video-section{margin-top:clamp(48px,5vw,72px);padding-top:32px;border-top:1px solid var(--line)}
 .dance-video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 28px}
 .dance-video-grid .sports-video-frame{width:100%;aspect-ratio:16/9;border-radius:0;box-shadow:none}
 @media(max-width:600px){.dance-video-grid{grid-template-columns:1fr;gap:28px}.dance-video-section{padding-top:24px}}
 
+/* Shared compact sign-off: name and email stay together instead of separate rows. */
 .closing{min-height:0;padding:30px 24px;text-align:center}
 .closing>p:first-child{margin:0 0 8px;font-size:10px;line-height:1.4;letter-spacing:.16em}
 .closing .closing-heading{display:flex;justify-content:center;align-items:center;flex-wrap:nowrap;gap:20px;margin:0}

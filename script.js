@@ -305,7 +305,7 @@ function initYouTubeVideos(){
     wrappers.forEach(wrapper=>{
       const iframe=wrapper.querySelector('iframe');const button=wrapper.querySelector('.feature-video-toggle');if(!iframe||!button)return;
       const videoId=wrapper.dataset.youtubeId;
-      const item={wrapper,player:null,ready:false,failed:false,ratio:0,manual:Boolean(wrapper.closest('#marketing-intern'))};players.push(item);
+      const item={wrapper,player:null,ready:false,failed:false,ratio:0,manual:wrapper.dataset.youtubeAutoplay==='false'||Boolean(wrapper.closest('#marketing-intern'))};players.push(item);
       const player=new YT.Player(iframe,{events:{
         onReady:event=>{
           item.player=event.target;item.ready=true;update(wrapper,false);observer.observe(wrapper);
