@@ -277,7 +277,7 @@ function initYouTubeVideos(){
     const mount=wrapper.querySelector('.youtube-player');if(!mount)return;
     wrapper.dataset.youtubeId=mount.dataset.youtubeId;
     const params=new URLSearchParams({enablejsapi:'1',autoplay:'0',controls:'1',playsinline:'1',rel:'0',origin:pageOrigin,widget_referrer:pageReferrer});
-    const iframe=document.createElement('iframe');iframe.src=`https://www.youtube.com/embed/${encodeURIComponent(mount.dataset.youtubeId)}?${params}`;iframe.title=mount.getAttribute('aria-label')||'YouTube video';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';mount.replaceWith(iframe);
+    const iframe=document.createElement('iframe');iframe.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(mount.dataset.youtubeId)}?${params}`;iframe.title=mount.getAttribute('aria-label')||'YouTube video';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';mount.replaceWith(iframe);
     const button=wrapper.querySelector('.feature-video-toggle');if(button)button.hidden=true;
   });
   loadYouTubeAPI().then(YT=>{
