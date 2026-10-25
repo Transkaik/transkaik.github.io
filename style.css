@@ -1363,14 +1363,18 @@ footer span {
 /* 移除 SHORT BIO 标签后收紧标题上边距，避免留白 */
 .editorial-home .eh-opening-intro>h2:first-child{margin-top:0}
 
-/* 首页四个关键词：透明底 + 2px 玫红描边 + 玫红文字 */
-.editorial-home .eh-keywords{gap:clamp(10px,1.2vw,16px)}
+/* 首页关键词：轻量文字与间隔点，自然换行。 */
+.editorial-home .eh-keywords{display:block;white-space:normal;line-height:2;justify-content:flex-start}
+.editorial-home .eh-keywords>span{margin:0 .45em;color:var(--rose-navigation);font-size:16px}
+@media(max-width:767px){
+  .editorial-home .eh-keywords strong{font-size:12px!important;letter-spacing:.04em!important}
+  .editorial-home .eh-keywords>span{margin:0 .25em;font-size:14px}
+}
 .editorial-home .eh-keywords strong{
-  display:inline-flex;
-  align-items:center;
-  padding:.55em 1.05em;
-  border:2px solid var(--eh-pink);
-  border-radius:999px;
+  display:inline-block;
+  padding:0;
+  border:0;
+  border-radius:0;
   background:transparent;
   color:var(--eh-pink)!important;
   font-size:clamp(14px,1.05vw,16px);
