@@ -1101,9 +1101,9 @@ footer span {
 .detail-page.full-stories .detail-module-header{margin-bottom:40px}
 .detail-page.full-stories .detail-module-header>div:first-child{margin:0 0 30px;padding:0 0 24px;text-align:left}
 .detail-page.full-stories .detail-module-header>div:first-child:after{left:0;width:64px;background:var(--story-title);transform:none;border-radius:0}
-.detail-page.full-stories .detail-module-header h2{max-width:100%;color:var(--story-title);font-size:clamp(42px,5.5vw,76px);line-height:1.06;text-wrap:balance}
+.detail-page.full-stories .detail-module-header h2{max-width:100%;color:var(--ink);font-size:clamp(42px,5.5vw,76px);line-height:1.06;text-wrap:balance}
 .detail-page.full-stories .detail-hero h1,.detail-page.full-stories .detail-module-header h2{font-family:'Bodoni Moda',var(--serif);font-weight:400;letter-spacing:-.035em}
-.detail-page.full-stories .detail-hero h1{color:var(--story-title)}
+.detail-page.full-stories .detail-hero h1{color:var(--ink)}
 .detail-page.full-stories .detail-module-copy{width:100%;max-width:none;margin:0;font-size:17px;line-height:1.75;color:#625e59}
 .detail-page.full-stories .detail-module-copy p{margin-bottom:20px;overflow-wrap:normal}
 .detail-page.full-stories .detail-module h3{color:#625158}
@@ -1180,43 +1180,45 @@ footer span {
 
 /* ===== 专题页共用：页面留白 / 章节块 / 页头 ===== */
 .detail-page{
+  /* 共享配色：画布 / 正文文字 / 玫红点缀 / 浅玫红底 / 玫红描边 / 白色描边 */
+  --color-bg:var(--bg);
+  --color-text:var(--ink);
+  --color-accent:var(--pink);
+  --color-surface:#fff;
+  --color-rose-soft:#fff3f6;
+  --color-rose-border:#ed4f87;
+  --color-rose-border-strong:#fff;
+  --color-rose-rule:rgba(237,79,135,.22);
   --gutter:clamp(16px,7vw,120px);
   --block-max:1240px;
   --block-pad:clamp(48px,4.8vw,72px);
   --block-radius:16px;
-  --block-bg:#fff;
-  --block-line:#ece6e0;
+  /* 板块之间的垂直节律：同时用于「两个板块之间」与「页眉与第一个板块之间」 */
+  --block-gap:clamp(72px,7vw,112px);
+  --block-outline-width:2px;
+  --block-outline:var(--color-rose-border);
+  --block-bg:var(--color-surface);
+  --block-line:var(--color-rose-rule);
 }
 
 /* 章节块：每个模块一个独立大板块，外层留出象牙白画布（Ventures / Leadership） */
 .topic-blocks #detail-main .detail-content{
   background:var(--bg);
-  padding:0 var(--gutter) clamp(72px,8vw,120px);
+  padding:var(--block-gap) var(--gutter) clamp(72px,8vw,120px);
 }
 .topic-blocks #detail-main .detail-module{
   max-width:var(--block-max);
-  margin:0 auto clamp(72px,7vw,112px);
+  margin:0 auto var(--block-gap);
   padding:var(--block-pad);
   background:var(--block-bg);
-  border:1px solid var(--block-line);
+  border:var(--block-outline-width) solid var(--block-outline);
   border-radius:var(--block-radius);
   box-shadow:0 14px 34px -28px rgba(39,36,43,.18);
   scroll-margin-top:92px;
 }
 .topic-blocks #detail-main .detail-module:last-child{margin-bottom:0}
-/* 只用站内已有的三种底色：白 / 极淡粉 / 极淡蓝，避免彩虹感 */
-.topic-blocks #detail-main .detail-module:nth-of-type(3n+2){--block-bg:#fdf3f7;--block-line:#f4dde5}
-.topic-blocks #detail-main .detail-module:nth-of-type(3n+3){--block-bg:#f4f7fc;--block-line:#e3eaf6}
-/* 个别章节按内容需要单独指定底色 */
-.ventures-page #detail-main #kettle-recipe{--block-bg:#fff;--block-line:#ece6e0}
-.ventures-page #detail-main #bpa{--block-bg:#f4f7fc;--block-line:#e3eaf6}
-
-/* Former blush blocks: white paper with a stronger rose outline. */
-.topic-blocks:is(.ventures-page,.leadership-page) #detail-main .detail-module:nth-of-type(3n+2){
-  --block-bg:#fff;
-  border:3px solid #ed4f87;
-  padding:calc(var(--block-pad) - 2px);
-}
+/* 只用两种样式交替：白块（玫红 2px 描边） / 浅玫红块（白色 2px 描边） */
+.topic-blocks #detail-main .detail-module:nth-of-type(even){--block-bg:var(--color-rose-soft);--block-outline:var(--color-rose-border-strong)}
 
 /* 板块标题：编号 + 大衬线标题在上，正文在下（上下排），下方细分隔线 */
 .topic-blocks #detail-main .detail-module-header{
@@ -1278,8 +1280,8 @@ footer span {
 .sports-detail-page #detail-main #soccer{background:#fff}
 
 @media(max-width:1024px){
-  .detail-page{--gutter:clamp(24px,5vw,64px);--block-pad:clamp(32px,4vw,48px)}
-  .topic-blocks #detail-main .detail-module{margin-bottom:clamp(48px,6vw,72px)}
+  .detail-page{--gutter:clamp(24px,5vw,64px);--block-pad:clamp(32px,4vw,48px);--block-gap:clamp(48px,6vw,72px)}
+  .topic-blocks #detail-main .detail-module{margin-bottom:var(--block-gap)}
   .topic-blocks #detail-main .detail-module-header h2{font-size:clamp(2rem,5vw,2.8rem)}
   .detail-hero.topic-hero{min-height:clamp(380px,52vw,460px)}
 }
@@ -1289,15 +1291,24 @@ footer span {
   .topic-blocks #detail-main .detail-module-header h2{font-size:clamp(2rem,6vw,3rem)}
 }
 @media(max-width:767px){
-  .detail-page{--gutter:18px;--block-pad:22px;--block-radius:14px}
+  .detail-page{--gutter:18px;--block-pad:22px;--block-radius:14px;--block-gap:36px}
   .topic-blocks #detail-main .detail-content{padding-bottom:56px}
-  .topic-blocks #detail-main .detail-module{margin-bottom:36px}
+  .topic-blocks #detail-main .detail-module{margin-bottom:var(--block-gap)}
   .topic-blocks #detail-main .detail-module-header{margin-bottom:28px;padding-bottom:22px}
   .topic-blocks #detail-main .detail-module-header>div:first-child{margin-bottom:16px}
   .topic-blocks #detail-main .detail-module-header h2{font-size:clamp(1.9rem,9vw,2.4rem)}
   .detail-hero.topic-hero{min-height:clamp(340px,78vw,420px)}
   .topic-hero-content{padding:calc(var(--header) + 40px) var(--block-pad) 32px}
 }
+
+/* Head Prefect：精简为一张通栏大图，保持视觉分量 */
+.leadership-page #head-prefect .head-prefect-photo{margin:clamp(30px,3.6vw,52px) 0 0}
+.leadership-page #head-prefect .head-prefect-photo img{display:block;width:100%;height:clamp(340px,38vw,560px);object-fit:cover;object-position:center 42%;border-radius:12px}
+.leadership-page #head-prefect .head-prefect-photo figcaption{margin-top:12px;color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+
+/* 页头大标题：黑色为主，仅关键词用玫红点缀 */
+.topic-hero-content h1 .topic-keyword{color:var(--color-accent)}
+.editorial-home #hero-title .eh-name-alt{color:var(--eh-pink);font-style:normal;font-size:.56em;letter-spacing:-.02em}
 
 /* 首页页头：Home 照片虚化沉入背景 → 主题色薄纱叠层 → 前景文字（与专题页同一套层次） */
 .editorial-home .eh-hero{position:relative;isolation:isolate;overflow:hidden;background:var(--eh-paper)}
@@ -1310,6 +1321,46 @@ footer span {
 }
 .eh-hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
 .eh-hero-bg img{position:absolute;right:0;top:0;width:64%;height:100%;object-fit:cover;object-position:center 62%;transform:scale(1.015);transform-origin:right center;filter:blur(3px) saturate(.9);mask-image:linear-gradient(90deg,transparent,#000 18%)}
+
+/* 页头导航（章节快捷入口）：玫红文字 + 2px 玫红描边，保持原有尺寸与位置 */
+.detail-hero.topic-hero .detail-toc a{
+  border:2px solid var(--color-accent);
+  border-radius:999px;
+  background:transparent;
+  color:var(--color-accent);
+  padding:7px 15px;
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.detail-hero.topic-hero .detail-toc a:hover,
+.detail-hero.topic-hero .detail-toc a:focus-visible,
+.detail-hero.topic-hero .detail-toc a[aria-current]{
+  background:var(--color-rose-soft);
+  border-color:var(--color-accent);
+  color:var(--color-accent);
+}
+
+/* Visual / Sports：页眉与第一个内容板块之间的留白，与该页板块节律一致 */
+.detail-page:is(.visual-page,.sports-detail-page){--block-gap:clamp(64px,7vw,104px)}
+.detail-page:is(.visual-page,.sports-detail-page) #detail-main .detail-content{padding-top:var(--block-gap)}
+
+/* 移除 SHORT BIO 标签后收紧标题上边距，避免留白 */
+.editorial-home .eh-opening-intro>h2:first-child{margin-top:0}
+
+/* 首页四个关键词：透明底 + 2px 玫红描边 + 玫红文字 */
+.editorial-home .eh-keywords{gap:clamp(10px,1.2vw,16px)}
+.editorial-home .eh-keywords strong{
+  display:inline-flex;
+  align-items:center;
+  padding:.55em 1.05em;
+  border:2px solid var(--eh-pink);
+  border-radius:999px;
+  background:transparent;
+  color:var(--eh-pink)!important;
+  font-size:clamp(14px,1.05vw,16px);
+  font-weight:500;
+  line-height:1.2;
+  letter-spacing:.08em;
+}
 .editorial-home .eh-opening-intro{grid-column:1/8;max-width:680px}
 @media(max-width:900px){.editorial-home .eh-opening-intro{grid-column:1/6;max-width:560px}}
 @media(max-width:767px){
