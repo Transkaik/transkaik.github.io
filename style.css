@@ -1505,6 +1505,12 @@ footer{padding-top:12px;padding-bottom:12px}
 .sports-detail-page #soccer .editorial-gallery .slide:nth-child(3){grid-column:1;grid-row:2}
 .sports-detail-page #soccer .editorial-gallery .slide:nth-child(4){grid-column:1;grid-row:3}
 .sports-detail-page #soccer .editorial-gallery .slide:nth-child(5){grid-column:2;grid-row:2/4}
+@media(min-width:768px){
+  .sports-detail-page #soccer .editorial-gallery .slide:is(:nth-child(3),:nth-child(4)){align-self:stretch;min-height:0}
+  .sports-detail-page #soccer .editorial-gallery .slide:is(:nth-child(3),:nth-child(4)) .zoom{position:relative;height:100%;min-height:0}
+  .sports-detail-page #soccer .editorial-gallery .slide:is(:nth-child(3),:nth-child(4)) img{position:absolute;inset:0;height:100%;object-fit:cover}
+  .sports-detail-page #soccer .editorial-gallery .slide:nth-child(4) img{object-position:center bottom}
+}
 @media(max-width:767px){
   .sports-detail-page #soccer .editorial-gallery .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
   .sports-detail-page #soccer .editorial-gallery .slide:nth-child(-n+2) img{aspect-ratio:auto;object-fit:contain}
