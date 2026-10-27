@@ -1499,3 +1499,13 @@ footer{padding-top:12px;padding-bottom:12px}
 .detail-page .detail-module :is(.resource-links a,.pdf-embed-actions a,.camping-article-link,.kettle-site-actions a,.photo-award figcaption a):hover,
 .detail-page .detail-module :is(.resource-links a,.pdf-embed-actions a,.camping-article-link,.kettle-site-actions a,.photo-award figcaption a):focus-visible{color:var(--rose-action);border-color:var(--rose-action);background:#fff1f6}
 @media(max-width:767px){.topic-hero-content{transform:translateY(-12px)}.detail-page.full-stories .detail-module{padding-top:32px}.topic-blocks #detail-main .detail-module{padding-top:var(--block-pad)}}
+/* Soccer opens with a balanced diptych, followed by a landscape/portrait spread. */
+.sports-detail-page #soccer .editorial-gallery .slide:nth-child(-n+2){grid-column:auto;grid-row:1;margin:0}
+.sports-detail-page #soccer .editorial-gallery .slide:nth-child(-n+2) img{aspect-ratio:3/2;object-fit:cover}
+.sports-detail-page #soccer .editorial-gallery .slide:nth-child(3){grid-column:1;grid-row:2}
+.sports-detail-page #soccer .editorial-gallery .slide:nth-child(4){grid-column:1;grid-row:3}
+.sports-detail-page #soccer .editorial-gallery .slide:nth-child(5){grid-column:2;grid-row:2/4}
+@media(max-width:767px){
+  .sports-detail-page #soccer .editorial-gallery .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
+  .sports-detail-page #soccer .editorial-gallery .slide:nth-child(-n+2) img{aspect-ratio:auto;object-fit:contain}
+}
