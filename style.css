@@ -1499,6 +1499,30 @@ footer{padding-top:12px;padding-bottom:12px}
 .detail-page .detail-module :is(.resource-links a,.pdf-embed-actions a,.camping-article-link,.kettle-site-actions a,.photo-award figcaption a):hover,
 .detail-page .detail-module :is(.resource-links a,.pdf-embed-actions a,.camping-article-link,.kettle-site-actions a,.photo-award figcaption a):focus-visible{color:var(--rose-action);border-color:var(--rose-action);background:#fff1f6}
 @media(max-width:767px){.topic-hero-content{transform:translateY(-12px)}.detail-page.full-stories .detail-module{padding-top:32px}.topic-blocks #detail-main .detail-module{padding-top:var(--block-pad)}}
+/* Circlo: complete interface screenshots, sequenced as editorial spreads. */
+.circlo-story{margin:0 0 clamp(40px,5vw,64px);padding-top:32px;border-top:1px solid var(--line)}
+.circlo-story-header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px}
+.circlo-story-header h3{margin:0;font:400 clamp(30px,3.3vw,44px)/1.12 var(--serif);letter-spacing:-.025em}
+.circlo-story-header>div>p:last-child{max-width:580px;margin:14px 0 0;color:var(--muted);font-size:16px;line-height:1.7}
+.circlo-site-link{flex:none;display:inline-flex;align-items:center;gap:16px;padding:8px 0;border-bottom:1px solid currentColor;color:var(--rose-action);font-size:14px;text-decoration:none}
+.circlo-site-link:hover{color:var(--ink)}
+.circlo-screen-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 24px;align-items:start}
+.circlo-screen{margin:0;min-width:0}
+.circlo-screen-wide{grid-column:1/-1}
+.circlo-screen .zoom{height:auto;border:1px solid #e5e0dc;background:#fff}
+.circlo-screen img{width:100%;height:auto;object-fit:contain;transform:none}
+.circlo-screen .zoom:hover img{transform:none}
+.circlo-screen figcaption{display:flex;align-items:baseline;gap:16px;margin-top:14px;font-size:13px;line-height:1.6;color:var(--muted)}
+.circlo-screen-number{flex:none;color:var(--rose-action);font-size:11px;letter-spacing:.12em}
+.circlo-screen figcaption strong{display:block;margin-bottom:3px;color:var(--ink);font-weight:500;font-size:15px}
+.circlo-screen figcaption>span>span{display:block}
+@media(max-width:767px){
+  .circlo-story{padding-top:24px}
+  .circlo-story-header{align-items:flex-start;flex-direction:column;gap:16px;margin-bottom:24px}
+  .circlo-screen-grid{grid-template-columns:1fr;gap:28px}
+  .circlo-screen-wide{grid-column:auto}
+  .circlo-screen figcaption{gap:12px;margin-top:10px}
+}
 /* Soccer opens with a balanced diptych, followed by a landscape/portrait spread. */
 .sports-detail-page #soccer .editorial-gallery .slide:nth-child(-n+2){grid-column:auto;grid-row:1;margin:0}
 .sports-detail-page #soccer .editorial-gallery .slide:nth-child(-n+2) img{aspect-ratio:3/2;object-fit:cover}
