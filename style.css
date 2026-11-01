@@ -1500,6 +1500,14 @@ footer{padding-top:12px;padding-bottom:12px}
 .detail-page .detail-module :is(.resource-links a,.pdf-embed-actions a,.camping-article-link,.kettle-site-actions a,.photo-award figcaption a):focus-visible{color:var(--rose-action);border-color:var(--rose-action);background:#fff1f6}
 @media(max-width:767px){.topic-hero-content{transform:translateY(-12px)}.detail-page.full-stories .detail-module{padding-top:32px}.topic-blocks #detail-main .detail-module{padding-top:var(--block-pad)}}
 /* Circlo: complete interface screenshots, sequenced as editorial spreads. */
+.editorial-home .eh-opening-intro>p{font-size:clamp(14px,1.12vw,17px);line-height:1.62}
+.editorial-home .eh-opening-intro>p+p{margin-top:18px}
+.writing-tutor-gallery{display:grid;grid-template-columns:1.2fr 1fr;align-items:end;gap:clamp(18px,2.5vw,32px)}
+.writing-tutor-gallery figure{margin:0}
+.writing-tutor-gallery .zoom{height:auto;border-radius:0}
+.writing-tutor-gallery img{height:auto;object-fit:contain}
+@media(max-width:1024px){.editorial-home .eh-opening-intro>p{font-size:14px;line-height:1.55}}
+@media(max-width:600px){.writing-tutor-gallery{grid-template-columns:1fr;gap:18px}}
 .circlo-story{margin:0 0 clamp(40px,5vw,64px);padding-top:32px;border-top:1px solid var(--line)}
 .circlo-story-header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px}
 .circlo-story-header h3{margin:0;font:400 clamp(30px,3.3vw,44px)/1.12 var(--serif);letter-spacing:-.025em}
