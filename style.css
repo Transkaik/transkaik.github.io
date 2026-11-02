@@ -1567,7 +1567,7 @@ footer{padding-top:12px;padding-bottom:12px}
 .editorial-home .eh-about-heading h2 em{color:var(--eh-pink);font-weight:400}
 .editorial-home .eh-about-grid{
   display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
-  align-items:center;gap:clamp(40px,6vw,88px);
+  align-items:center;gap:clamp(32px,3vw,56px);
 }
 .editorial-home .eh-about-portrait{width:100%;max-width:430px;margin:0;min-width:0}
 .editorial-home .eh-about-image{background:#f3f3f3}
@@ -1584,6 +1584,9 @@ footer{padding-top:12px;padding-bottom:12px}
   margin:0;color:#58565c;font:400 clamp(17px,1.3vw,19px)/1.8 var(--sans);letter-spacing:0;
 }
 .editorial-home .eh-about-text p+p{margin-top:24px}
+@media(min-width:1025px){
+  .editorial-home .eh-about-portrait{margin-right:0;margin-left:auto}
+}
 @media(min-width:721px) and (max-width:1024px){
   .editorial-home .eh-about-grid{grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:32px;align-items:start}
   .editorial-home .eh-about-text p{font-size:17px;line-height:1.7}
@@ -1594,7 +1597,7 @@ footer{padding-top:12px;padding-bottom:12px}
   .editorial-home .eh-about{margin-top:64px;padding:40px 24px 56px}
   .editorial-home .eh-about-heading{margin-bottom:28px}
   .editorial-home .eh-about-grid{grid-template-columns:1fr;gap:32px}
-  .editorial-home .eh-about-portrait{max-width:360px}
+  .editorial-home .eh-about-portrait{max-width:360px;margin-inline:auto}
   .editorial-home .eh-about-text p{font-size:17px;line-height:1.75}
   .editorial-home .eh-about-text p+p{margin-top:20px}
 }
