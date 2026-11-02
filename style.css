@@ -1547,3 +1547,54 @@ footer{padding-top:12px;padding-bottom:12px}
   .sports-detail-page #soccer .editorial-gallery .slide:nth-child(n){grid-column:1;grid-row:auto;margin:0}
   .sports-detail-page #soccer .editorial-gallery .slide:nth-child(-n+2) img{aspect-ratio:auto;object-fit:contain}
 }
+
+/* HOME / ABOUT ME — a quiet portrait and reading spread. */
+.editorial-home .eh-about{
+  width:100%;
+  margin-top:clamp(64px,7vw,104px);
+  padding:clamp(48px,5vw,72px) max(24px,calc((100% - 1240px)/2)) clamp(64px,7vw,100px);
+  background:#fff;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.editorial-home .eh-about-heading{margin:0 0 clamp(28px,3vw,40px)}
+.editorial-home .eh-about-heading .eh-label{margin:0 0 14px;color:var(--eh-pink)}
+.editorial-home .eh-about-heading h2{
+  margin:0;color:var(--eh-ink);
+  font:400 clamp(42px,4.5vw,64px)/1.08 'Bodoni Moda',var(--serif);
+  letter-spacing:-.035em;
+}
+.editorial-home .eh-about-heading h2 em{color:var(--eh-pink);font-weight:400}
+.editorial-home .eh-about-grid{
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  align-items:center;gap:clamp(40px,6vw,88px);
+}
+.editorial-home .eh-about-portrait{width:100%;max-width:430px;margin:0;min-width:0}
+.editorial-home .eh-about-image{background:#f3f3f3}
+.editorial-home .eh-about-image img{display:block;width:100%;height:auto}
+.editorial-home .eh-about-portrait figcaption{
+  display:flex;justify-content:space-between;gap:12px;
+  margin-top:12px;padding-top:10px;border-top:1px solid var(--line);
+  font:400 11px/1.5 var(--sans);letter-spacing:.035em;color:var(--muted);
+}
+.editorial-home .eh-about-portrait figcaption span:last-child{text-align:right}
+.editorial-home .eh-about-copy{min-width:0}
+.editorial-home .eh-about-text{max-width:680px}
+.editorial-home .eh-about-text p{
+  margin:0;color:#58565c;font:400 clamp(17px,1.3vw,19px)/1.8 var(--sans);letter-spacing:0;
+}
+.editorial-home .eh-about-text p+p{margin-top:24px}
+@media(min-width:721px) and (max-width:1024px){
+  .editorial-home .eh-about-grid{grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:32px;align-items:start}
+  .editorial-home .eh-about-text p{font-size:17px;line-height:1.7}
+  .editorial-home .eh-about-portrait figcaption{flex-direction:column;gap:2px}
+  .editorial-home .eh-about-portrait figcaption span:last-child{text-align:left}
+}
+@media(max-width:720px){
+  .editorial-home .eh-about{margin-top:64px;padding:40px 24px 56px}
+  .editorial-home .eh-about-heading{margin-bottom:28px}
+  .editorial-home .eh-about-grid{grid-template-columns:1fr;gap:32px}
+  .editorial-home .eh-about-portrait{max-width:360px}
+  .editorial-home .eh-about-text p{font-size:17px;line-height:1.75}
+  .editorial-home .eh-about-text p+p{margin-top:20px}
+}
