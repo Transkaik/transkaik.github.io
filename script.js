@@ -6,7 +6,7 @@ function initNavigation(){
 
 function initContentOrder(){
   const appendInOrder=(parent,ids)=>{if(!parent)return;ids.forEach(id=>{const item=document.getElementById(id);if(item)parent.appendChild(item)})};
-  appendInOrder(document.getElementById('ventures'),['storage-platform','healthy-bowl','kettle-recipe','bpa','china-camping-club','marketing-intern']);
+  appendInOrder(document.getElementById('ventures'),['storage-platform','secondhand-trading','healthy-bowl','kettle-recipe','bpa','china-camping-club','marketing-intern']);
   appendInOrder(document.querySelector('.leadership-list'),['head-prefect','head-ambassador','writing-center-tutor','calligraphy-club','assistance-coach','volunteer-teaching','cooking-club']);
   appendInOrder(document.getElementById('visual'),['photography','documentary']);
   appendInOrder(document.querySelector('.sports-pair'),['dancing','soccer']);
@@ -15,7 +15,7 @@ function initContentOrder(){
 function initDetailLinks(){
   if(!document.body.classList.contains('home-page'))return;
   const pages={
-    'storage-platform':'ventures.html','healthy-bowl':'ventures.html','kettle-recipe':'ventures.html','bpa':'ventures.html','china-camping-club':'ventures.html','marketing-intern':'ventures.html',
+    'storage-platform':'ventures.html','secondhand-trading':'ventures.html','healthy-bowl':'ventures.html','kettle-recipe':'ventures.html','bpa':'ventures.html','china-camping-club':'ventures.html','marketing-intern':'ventures.html',
     'head-prefect':'leadership.html','head-ambassador':'leadership.html','writing-center-tutor':'leadership.html','calligraphy-club':'leadership.html','assistance-coach':'leadership.html','volunteer-teaching':'leadership.html','cooking-club':'leadership.html',
     'photography':'visual.html','documentary':'visual.html','figure-skating':'sports.html','dancing':'sports.html','soccer':'sports.html'
   };
@@ -27,7 +27,7 @@ function initDetailLinks(){
 }
 
 const CHAPTERS=[
-  {label:'Ventures',page:'ventures.html',modules:[['storage-platform','Storage Platform &amp; Secondhand Trading'],['healthy-bowl','Healthy Bowl'],['kettle-recipe','Kettle Recipe'],['bpa','BPA'],['china-camping-club','China Camping Club'],['marketing-intern','Marketing Intern']]},
+  {label:'Ventures',page:'ventures.html',modules:[['storage-platform','Storage Platform'],['secondhand-trading','Secondhand Trading'],['healthy-bowl','Healthy Bowl'],['kettle-recipe','Kettle Recipe'],['bpa','BPA'],['china-camping-club','China Camping Club'],['marketing-intern','Marketing Intern']]},
   {label:'Leadership',page:'leadership.html',modules:[['head-prefect','Head Prefect'],['head-ambassador','Head Ambassador'],['writing-center-tutor','Writing Center Tutor'],['calligraphy-club','Calligraphy Club'],['assistance-coach','Assistance Coach'],['volunteer-teaching','Volunteer Teaching'],['cooking-club','Cooking Club']]},
   {label:'Visual',page:'visual.html',modules:[['photography','Photography'],['documentary','Documentary']]},
   {label:'Sports',page:'sports.html',modules:[['figure-skating','Figure Skating'],['dancing','Dancing'],['soccer','Soccer']]}
