@@ -963,7 +963,8 @@ footer span {
 .editorial-home .eh-speech-return h3{margin:.25rem 0 1rem;font-size:clamp(2.3rem,4vw,3.55rem);line-height:1.02}
 .editorial-home .eh-speech-return h3 em{color:var(--eh-pink);font-weight:400}
 .editorial-home .feature-video-toggle[hidden]{display:none!important}
-.editorial-home .eh-video-caption{width:100%;max-width:1080px;margin:12px auto 0;color:#706b67;font-size:11px;letter-spacing:.06em}
+.editorial-home .eh-speech-return{row-gap:10px}
+.editorial-home .eh-video-caption{width:100%;max-width:1080px;margin:0 auto;color:#706b67;font-size:11px;letter-spacing:.06em;text-align:left}
 
 /* Final alignment pass for homepage metadata and chapter headings. */
 .editorial-home .eh-meta{display:block}
