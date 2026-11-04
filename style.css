@@ -1382,7 +1382,15 @@ footer span {
   line-height:1.2;
   letter-spacing:.08em;
 }
-.editorial-home .eh-opening-intro{grid-column:1/8;max-width:680px}
+.editorial-home .eh-opening-intro{grid-column:1/9;max-width:min(760px,60vw)}
+/* Let the complete introduction set the hero height, with a close reading cue. */
+.editorial-home .eh-hero{min-height:0;padding-bottom:62px;align-content:start}
+.editorial-home .eh-opening-intro>p:last-child{margin-bottom:0}
+.editorial-home .eh-scroll{bottom:14px}
+@media(min-width:901px){
+  .editorial-home .eh-hero{padding-bottom:48px}
+  .editorial-home .eh-hero-bg img{width:52%}
+}
 @media(max-width:900px){.editorial-home .eh-opening-intro{grid-column:1/6;max-width:560px}}
 @media(max-width:767px){
   .eh-hero-bg img{width:100%;object-position:48% center;filter:blur(2px) saturate(.85);mask-image:none}
