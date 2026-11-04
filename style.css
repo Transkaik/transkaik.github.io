@@ -1363,6 +1363,7 @@ footer span {
 
 /* 移除 SHORT BIO 标签后收紧标题上边距，避免留白 */
 .editorial-home .eh-opening-intro>h2:first-child{margin-top:0}
+.editorial-home .eh-opening-intro>h2,.editorial-home .eh-scroll{color:var(--eh-pink)}
 
 /* 首页关键词：轻量文字与间隔点，自然换行。 */
 .editorial-home .eh-keywords{display:block;white-space:normal;line-height:2;justify-content:flex-start}
