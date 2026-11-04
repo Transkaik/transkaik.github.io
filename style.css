@@ -1558,7 +1558,7 @@ footer{padding-top:12px;padding-bottom:12px}
 }
 
 /* HOME / ABOUT ME — a quiet portrait and reading spread. */
-.editorial-home .eh-speech-note{max-width:900px;margin:24px auto 0;color:var(--muted);font:400 clamp(16px,1.3vw,18px)/1.75 var(--sans);text-align:left}
+.editorial-home .eh-speech-note{width:100%;max-width:1080px;margin:24px auto 0;color:var(--muted);font:400 clamp(16px,1.3vw,18px)/1.75 var(--sans);text-align:left}
 .editorial-home .eh-about{
   width:100%;
   margin-top:clamp(64px,7vw,104px);
