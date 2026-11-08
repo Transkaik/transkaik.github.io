@@ -179,10 +179,22 @@ function initCarousels(){
 function initLightbox(){
   const dialog=document.querySelector('.lightbox');if(!dialog)return;
   const image=dialog.querySelector('img');const caption=dialog.querySelector('figcaption');const allItems=[...document.querySelectorAll('.zoom')];let items=allItems;let index=0;
-  const openAt=value=>{index=(value+items.length)%items.length;const source=items[index].querySelector('img');if(!source)return;image.src=source.currentSrc||source.src;image.alt=source.alt;caption.textContent=items[index].closest('figure')?.querySelector('figcaption')?.textContent||source.alt};
+  const openAt=value=>{index=(value+items.length)%items.length;const source=items[index].querySelector('img');if(!source)return;image.src=source.dataset.fullSrc||source.currentSrc||source.src;image.alt=source.alt;caption.textContent=items[index].closest('figure')?.querySelector('figcaption')?.textContent||source.alt};
   allItems.forEach(item=>item.addEventListener('click',()=>{items=allItems.filter(button=>button.getClientRects().length>0);openAt(items.indexOf(item));dialog.showModal()}));
   dialog.querySelector('.lightbox-close').addEventListener('click',()=>dialog.close());dialog.querySelector('.lightbox-prev').addEventListener('click',()=>openAt(index-1));dialog.querySelector('.lightbox-next').addEventListener('click',()=>openAt(index+1));
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});dialog.addEventListener('keydown',event=>{if(event.key==='ArrowLeft')openAt(index-1);if(event.key==='ArrowRight')openAt(index+1)});
+}
+
+function initOnDemandPdfs(){
+  document.querySelectorAll('[data-load-pdf]').forEach(button=>{
+    button.addEventListener('click',()=>{
+      const frame=button.parentElement.querySelector('iframe[data-pdf-src]');
+      if(!frame)return;
+      frame.src=frame.dataset.pdfSrc;
+      button.hidden=true;
+      frame.focus();
+    });
+  });
 }
 
 function initMobileMenu(){
@@ -337,4 +349,4 @@ function initYouTubeVideos(){
   }));
 }
 
-document.addEventListener('DOMContentLoaded',()=>{initContentOrder();initDetailLinks();initDetailNavigation();initModuleFocus();initReadingSizes();initNavigation();initDropdowns();initSmoothScroll();initScrollSpy();initRevealAnimations();initCarousels();initLightbox();initMobileMenu();initLazyVideos();initBpaCertificatePreviews();initFeatureVideos();initYouTubeVideos()});
+document.addEventListener('DOMContentLoaded',()=>{initContentOrder();initDetailLinks();initDetailNavigation();initModuleFocus();initReadingSizes();initNavigation();initDropdowns();initSmoothScroll();initScrollSpy();initRevealAnimations();initCarousels();initLightbox();initMobileMenu();initOnDemandPdfs();initLazyVideos();initBpaCertificatePreviews();initFeatureVideos();initYouTubeVideos()});
